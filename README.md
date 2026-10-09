@@ -1,11 +1,37 @@
 # KIM1025
 
-Current version: **1.6.28**.
+Current version: **1.6.30**.
 
-[Download the latest release](https://github.com/Bentley734/KIM1025/releases/latest).
+[Download the latest installable release](https://github.com/Bentley734/KIM1025/releases/latest).
 
-The complete current source, Lua modules, tests and bundled artwork are stored in [KIM1025-source.zip](KIM1025-source.zip). Extract the archive to inspect or edit the `kim1025` directory. It contains the same validated files as the installable release package.
+1.6.30 replaces layered portrait and widescreen backdrops with 144 complete HD arena images. Original mound geometry and existing Pokémon alignment are preserved. Each location has matching surrounding scenery.
 
-Version 1.6.28 enables extended battle backdrops across Windows, Linux, macOS, Android and iOS, including desktop layouts without touch controls. It retains the raised horizons and clean backdrop artwork from 1.6.27.
+The complete current source is packaged in [KIM1025-source.zip](KIM1025-source.zip) and these artwork archives:
 
-To install, replace the previous KIM1025 mod folder with `kim1025` from the release ZIP. Keep the existing downloaded asset cache.
+- [KIM1025-aspect-source-01.zip](KIM1025-aspect-source-01.zip)
+- [KIM1025-aspect-source-02.zip](KIM1025-aspect-source-02.zip)
+- [KIM1025-aspect-source-03.zip](KIM1025-aspect-source-03.zip)
+- [KIM1025-aspect-source-04.zip](KIM1025-aspect-source-04.zip)
+- [KIM1025-aspect-source-05.zip](KIM1025-aspect-source-05.zip)
+- [KIM1025-aspect-source-06.zip](KIM1025-aspect-source-06.zip)
+- [KIM1025-aspect-source-07.zip](KIM1025-aspect-source-07.zip)
+- [KIM1025-aspect-source-08.zip](KIM1025-aspect-source-08.zip)
+- [KIM1025-aspect-source-09.zip](KIM1025-aspect-source-09.zip)
+- [KIM1025-aspect-source-10.zip](KIM1025-aspect-source-10.zip)
+- [KIM1025-aspect-source-11.zip](KIM1025-aspect-source-11.zip)
+- [KIM1025-aspect-source-12.zip](KIM1025-aspect-source-12.zip)
+- [KIM1025-aspect-source-13.zip](KIM1025-aspect-source-13.zip)
+- [KIM1025-aspect-source-14.zip](KIM1025-aspect-source-14.zip)
+- [KIM1025-aspect-source-15.zip](KIM1025-aspect-source-15.zip)
+- [KIM1025-aspect-source-16.zip](KIM1025-aspect-source-16.zip)
+- [KIM1025-aspect-source-17.zip](KIM1025-aspect-source-17.zip)
+- [KIM1025-aspect-source-18.zip](KIM1025-aspect-source-18.zip)
+- [KIM1025-aspect-source-19.zip](KIM1025-aspect-source-19.zip)
+- [KIM1025-aspect-source-20.zip](KIM1025-aspect-source-20.zip)
+- [KIM1025-aspect-source-21.zip](KIM1025-aspect-source-21.zip)
+- [KIM1025-aspect-source-22.zip](KIM1025-aspect-source-22.zip)
+- [KIM1025-aspect-source-23.zip](KIM1025-aspect-source-23.zip)
+
+Extract all listed archives into the same directory to assemble the complete `kim1025` source tree. Older backdrop and widescreen source archives are obsolete for this version. The release ZIP contains everything needed to install in one file.
+
+Replace the previous mod folder and retain your downloaded KIM asset cache. See `COMPLETE-ARENAS.md` in the source for rendering and validation details.
