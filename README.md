@@ -1,4 +1,4 @@
-# KIM1025 1.7.20
+# KIM1025 1.7.21
 
 KIM1025 now keeps four features:
 
@@ -32,3 +32,7 @@ All 21 regression suites pass and all 47 Lua files compile. The current 1025Dex 
 Open KIM1025 options to change TRAINER SIZE, PLAYER POKEMON SIZE or ENEMY POKEMON SIZE. Each ranges from 50% to 200% in 10% steps and defaults to 100%. Trainer 100% equals the former 200%; player 100% equals the former 130%. New trainer/player keys prevent old percentages being interpreted against the new baselines. Enemy percentages now affect the Native Fit mound-anchored renderer using trimmed natural provider frames. Settings persist and take effect on battle redraw. Mobile calibration is unchanged.
 
 1.7.20 validation: all 21 regression suites and 47 Lua compilation checks pass, including 492 scale/anchor/mobile assertions, 139 compositor checks and 235 live provider checks against current 1025Dex 1.2.34. Windows LOVE passes 42 Native Fit geometry and scaling GPU checks at 1040x700, 1920x1080 and 5120x1440. Full ROM gameplay was not captured.
+
+## Asset menu location
+
+Open KIM1025, then KIM ASSETS. The game options page no longer has a separate KIM ASSETS entry. Existing downloads, cached artwork, and the missing-assets boot prompt are retained.
