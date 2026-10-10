@@ -1,4 +1,4 @@
-# KIM1025 1.7.17
+# KIM1025 1.7.20
 
 KIM1025 now keeps four features:
 
@@ -15,20 +15,20 @@ The existing iOS/Android portrait and landscape framing, Retina framebuffer sizi
 
 ## Install
 
-Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.17.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
+Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.20.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
 
 Open KIM ASSETS to download missing original KIM assets and KIM1025 background artwork. The downloader keeps its visible selector arrow, DOWNLOAD ALL queue, upgrade prompt, separate DOWNLOAD KIM1025 option, verification, retry and cancellation. The artwork pack is still version 1.0.0; this update does not require downloading it again.
 
+## Desktop Native Fit correction
+
+1.7.20 fixes the remaining player Pokemon oversizing and mound drift in desktop Native Fit. The scene requests a trimmed, bottom-anchored 1025Dex image and draws it at the painted mound's exact transform, instead of replaying the native UI layer at its larger zoom. The fixed trainer presentation is retained. Mobile calibrations are retained.
+
 ## Validation
 
-All 19 regression suites pass and 55 Lua files compile. The complete entry boots in Gen 1/2/3 fixtures for desktop and iOS, including upgrades with removed features enabled in saved settings. Tests cover native/provider ownership, animated frames, downloader/cache behavior, HD scene selection, platform anchors, retina scaling and orientation using Gen1Recomp 0.3.71 source. An additional 225 checks use the installed 1025Dex scene hook and its real animation timing.
+All 21 regression suites pass and all 47 Lua files compile. The current 1025Dex 1.2.34 hook passes 231 checks, including the desktop Native Fit and natural-frame contract. The production Native Fit player branch renders with real Nidoking artwork and the cached grass arena in Windows LOVE at 1040x700, 1920x1080 and 5120x1440; 6 size and mound-anchor GPU checks pass. These are renderer tests; full ROM gameplay capture remains unverified.
 
-The local LÖVE runtime also passes 26 GPU checks with the installed 1025Dex timing and 9 GPU trainer checks at 1320×2868 and 660×1434. These are isolated renderer tests; full ROM gameplay and a physical iPhone run have not been verified.
+## Desktop sprite size controls
 
-Battle UI Customizer 1.0.7: the HD Gen 1 move menu uses its selected Emerald frame and panel opacity in portrait, landscape and desktop layouts.
+Open KIM1025 options to change TRAINER SIZE, PLAYER POKEMON SIZE or ENEMY POKEMON SIZE. Each ranges from 50% to 200% in 10% steps and defaults to 100%. Trainer 100% equals the former 200%; player 100% equals the former 130%. New trainer/player keys prevent old percentages being interpreted against the new baselines. Enemy percentages now affect the Native Fit mound-anchored renderer using trimmed natural provider frames. Settings persist and take effect on battle redraw. Mobile calibration is unchanged.
 
-Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
-
-Desktop HD battles now use the player provider pixels at the scene scale, ignoring obsolete KIM player-size settings. The desktop trainer is smaller and remains anchored to the dialogue top. Mobile size calibrations are retained.
-
-1.7.17 validation: 21 Lua suites passed, including 120 desktop scaling checks and 225 checks with GitHub 1025Dex 1.2.34. All 47 Lua files compile. Windows LOVE passed 25 GPU checks using real sprite frames at five resolutions, including 5120x1440. Live ROM gameplay capture was unavailable because the Windows capture helper timed out.
+1.7.20 validation: all 21 regression suites and 47 Lua compilation checks pass, including 492 scale/anchor/mobile assertions, 139 compositor checks and 235 live provider checks against current 1025Dex 1.2.34. Windows LOVE passes 42 Native Fit geometry and scaling GPU checks at 1040x700, 1920x1080 and 5120x1440. Full ROM gameplay was not captured.
