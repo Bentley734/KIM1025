@@ -1,10 +1,14 @@
 # KIM1025
 
-Current version: **1.6.31**.
+Current version: **1.7.1**.
 
 [Download the latest installable release](https://github.com/Bentley734/KIM1025/releases/latest).
 
-1.6.31 adds 72 complete 32:9 HD arenas with seamlessly extended scenery and preserved original mound positions. Ultrawide screens select them automatically. Existing portrait and widescreen arenas remain included. Native-menu clipping no longer leaves black side bars.
+1.7.1 integrates the Gen 1/2 player battle-sprite animation hotfix and includes all supporting libraries, data, and packaged artwork in the complete release ZIP. It also includes the Gen 3 compatibility and Kanto in Motion 1.7.0 updates, preserving custom portrait, widescreen, and ultrawide arenas.
+
+Use the full release ZIP to replace your mod folder. The earlier six-file hotfix was an overlay and could not replace a complete installation. Retain the external downloaded KIM asset cache and restart Gen1Recomp.
+
+All 14 runnable headless test suites and 82 Lua syntax checks pass; live device gameplay remains unverified.
 
 The complete source is packaged in [KIM1025-source.zip](KIM1025-source.zip) and these artwork archives:
 
