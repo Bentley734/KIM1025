@@ -1,4 +1,4 @@
-# KIM1025 1.7.16
+# KIM1025 1.7.17
 
 KIM1025 now keeps four features:
 
@@ -15,7 +15,7 @@ The existing iOS/Android portrait and landscape framing, Retina framebuffer sizi
 
 ## Install
 
-Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.16.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
+Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.17.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
 
 Open KIM ASSETS to download missing original KIM assets and KIM1025 background artwork. The downloader keeps its visible selector arrow, DOWNLOAD ALL queue, upgrade prompt, separate DOWNLOAD KIM1025 option, verification, retry and cancellation. The artwork pack is still version 1.0.0; this update does not require downloading it again.
 
@@ -29,12 +29,6 @@ Battle UI Customizer 1.0.7: the HD Gen 1 move menu uses its selected Emerald fra
 
 Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
 
-Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
+Desktop HD battles now use the player provider pixels at the scene scale, ignoring obsolete KIM player-size settings. The desktop trainer is smaller and remains anchored to the dialogue top. Mobile size calibrations are retained.
 
-Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
-
-Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
-
-Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
-
-Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
+1.7.17 validation: 21 Lua suites passed, including 120 desktop scaling checks and 225 checks with GitHub 1025Dex 1.2.34. All 47 Lua files compile. Windows LOVE passed 25 GPU checks using real sprite frames at five resolutions, including 5120x1440. Live ROM gameplay capture was unavailable because the Windows capture helper timed out.
