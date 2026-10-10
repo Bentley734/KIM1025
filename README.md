@@ -1,4 +1,4 @@
-# KIM1025 1.7.7
+# KIM1025 1.7.8
 
 KIM1025 now keeps four features:
 
@@ -15,7 +15,7 @@ The existing iOS/Android portrait and landscape framing, Retina framebuffer sizi
 
 ## Install
 
-Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.7.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
+Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.8.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
 
 Open KIM ASSETS to download missing original KIM assets and KIM1025 background artwork. The downloader keeps its visible selector arrow, DOWNLOAD ALL queue, upgrade prompt, separate DOWNLOAD KIM1025 option, verification, retry and cancellation. The artwork pack is still version 1.0.0; this update does not require downloading it again.
 
