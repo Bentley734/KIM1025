@@ -1,5 +1,13 @@
 # KIM1025
 
+## 1.7.5 — Gen 1 battle sprite conflict with 1025Dex
+
+Fixes a second sprite provider drawing over KIM's continuously animated Pokemon. 1025Dex can replace KIM's transparent native-slot sprite inside its own pics-layer wrapper. KIM now resolves the final native picImage boundary: it suppresses that covering copy in the HD scene, and supplies the current KIM frame in native battle presentation. The guard applies to both player and enemy, independent of mod load order. It yields when KIM battle sprites are disabled or their source is unavailable, and preserves trainer and send-out ownership.
+
+Install `kim1025-1.7.5.zip` (about 9 MB), replace `mods/kim1025`, keep the downloaded asset cache, and fully restart the game. 1025Dex and WildFollowers can remain enabled. The asset pack stays at version 1.0.0 and does not need downloading again.
+
+Validation: 18 runnable suites passed and 88 Lua files compiled. The new regression checks both load orders and repeated player/enemy loops (108 checks), also passing against the installed 1025Dex 1.2.34 Gen 1 wrapper. The installed Mac LOVE runtime passed 52 GPU checks, including 24 live player/enemy frame checks composited through that actual Dex wrapper. Full ROM and physical phone gameplay remain unverified.
+
 ## 1.7.4 — Downloader selector and Gen 1 battle animation
 
 The KIM ASSETS downloader now draws a visible selection arrow beside the selected download or removal option, independent of the game's font.
