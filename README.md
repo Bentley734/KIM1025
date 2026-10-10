@@ -1,14 +1,14 @@
 # KIM1025
 
-Current version: **1.7.1**.
+Current version: **1.7.2**.
 
 [Download the latest installable release](https://github.com/Bentley734/KIM1025/releases/latest).
 
-1.7.1 integrates the Gen 1/2 player battle-sprite animation hotfix and includes all supporting libraries, data, and packaged artwork in the complete release ZIP. It also includes the Gen 3 compatibility and Kanto in Motion 1.7.0 updates, preserving custom portrait, widescreen, and ultrawide arenas.
+1.7.2 fixes the mobile HD trainer intro: the trainer scales with the arena and is centered on the player mound. It handles custom and ROM trainers and prevents the original small trainer from appearing twice. The complete release ZIP includes all supporting libraries, data, and artwork, including the prior 1.7.1 loading and animation fixes.
 
-Use the full release ZIP to replace your mod folder. The earlier six-file hotfix was an overlay and could not replace a complete installation. Retain the external downloaded KIM asset cache and restart Gen1Recomp.
+Replace your mod folder using the full release ZIP, retain your downloaded KIM asset cache, and restart Gen1Recomp.
 
-All 14 runnable headless test suites and 82 Lua syntax checks pass; live device gameplay remains unverified.
+All 15 runnable headless test suites and 83 Lua syntax checks pass. The trainer regression includes 82 assertions; a local LOVE GPU fixture passed 9 checks at two portrait resolutions. Full ROM gameplay and physical iPhone testing remain unverified.
 
 The complete source is packaged in [KIM1025-source.zip](KIM1025-source.zip) and these artwork archives:
 
