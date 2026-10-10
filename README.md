@@ -1,4 +1,4 @@
-# KIM1025 1.7.15
+# KIM1025 1.7.16
 
 KIM1025 now keeps four features:
 
@@ -15,7 +15,7 @@ The existing iOS/Android portrait and landscape framing, Retina framebuffer sizi
 
 ## Install
 
-Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.15.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
+Close the game, replace the previous `mods/kim1025` folder with the `kim1025` folder in `kim1025-1.7.16.zip`, and restart. Replace the whole folder so removed files do not linger. Keep the downloaded asset cache. 1025Dex and WildFollowers can remain enabled.
 
 Open KIM ASSETS to download missing original KIM assets and KIM1025 background artwork. The downloader keeps its visible selector arrow, DOWNLOAD ALL queue, upgrade prompt, separate DOWNLOAD KIM1025 option, verification, retry and cancellation. The artwork pack is still version 1.0.0; this update does not require downloading it again.
 
@@ -26,6 +26,8 @@ All 19 regression suites pass and 55 Lua files compile. The complete entry boots
 The local LÖVE runtime also passes 26 GPU checks with the installed 1025Dex timing and 9 GPU trainer checks at 1320×2868 and 660×1434. These are isolated renderer tests; full ROM gameplay and a physical iPhone run have not been verified.
 
 Battle UI Customizer 1.0.7: the HD Gen 1 move menu uses its selected Emerald frame and panel opacity in portrait, landscape and desktop layouts.
+
+Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
 
 Battle UI Customizer 1.0.7: Vanilla uses native Gen 1 move frames; Emerald keeps its thick red borders. Panel opacity works in all orientations.
 
