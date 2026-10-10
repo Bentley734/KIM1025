@@ -1,56 +1,19 @@
 # KIM1025
 
-Current version: **1.7.2**.
+Current version: **1.7.3**.
 
-[Download the latest installable release](https://github.com/Bentley734/KIM1025/releases/latest).
+[Download the latest mod release](https://github.com/Bentley734/KIM1025/releases/latest).
 
-1.7.2 fixes the mobile HD trainer intro: the trainer scales with the arena and is centered on the player mound. It handles custom and ROM trainers and prevents the original small trainer from appearing twice. The complete release ZIP includes all supporting libraries, data, and artwork, including the prior 1.7.1 loading and animation fixes.
+The installable `kim1025-1.7.3.zip` is now **8.98 MB**, down from 473 MB. The 216 portrait, widescreen and ultrawide battle backgrounds download once through KIM ASSETS and persist across mod updates.
 
-Replace your mod folder using the full release ZIP, retain your downloaded KIM asset cache, and restart Gen1Recomp.
+- DOWNLOAD ALL installs missing original KIM packs, followed by KIM1025 assets.
+- DOWNLOAD KIM1025 installs only the new artwork pack.
+- Users with original assets already installed receive a prompt for the new pack. B defers it; it remains available under KIM ASSETS.
 
-All 15 runnable headless test suites and 83 Lua syntax checks pass. The trainer regression includes 82 assertions; a local LOVE GPU fixture passed 9 checks at two portrait resolutions. Full ROM gameplay and physical iPhone testing remain unverified.
+Close the game, replace mods/kim1025 with the extracted kim1025 folder from the small mod ZIP, keep the downloaded asset cache, and restart. Accept the in-app artwork download prompt. The artwork pack `KIM1025-assets-v1.0.0.zip` is for the downloader and is not an installable mod ZIP.
 
-The complete source is packaged in [KIM1025-source.zip](KIM1025-source.zip) and these artwork archives:
+Art pack version 1.0.0 is independent of mod version 1.7.3. Future code releases continue to use this pack unless artwork changes. Keep the v1.7.3 release and artwork asset available. Each artwork file is SHA-256 checked during installation; original KIM and KIM1025 caches and removal indexes are isolated.
 
-- [KIM1025-aspect-source-01.zip](KIM1025-aspect-source-01.zip)
-- [KIM1025-aspect-source-02.zip](KIM1025-aspect-source-02.zip)
-- [KIM1025-aspect-source-03.zip](KIM1025-aspect-source-03.zip)
-- [KIM1025-aspect-source-04.zip](KIM1025-aspect-source-04.zip)
-- [KIM1025-aspect-source-05.zip](KIM1025-aspect-source-05.zip)
-- [KIM1025-aspect-source-06.zip](KIM1025-aspect-source-06.zip)
-- [KIM1025-aspect-source-07.zip](KIM1025-aspect-source-07.zip)
-- [KIM1025-aspect-source-08.zip](KIM1025-aspect-source-08.zip)
-- [KIM1025-aspect-source-09.zip](KIM1025-aspect-source-09.zip)
-- [KIM1025-aspect-source-10.zip](KIM1025-aspect-source-10.zip)
-- [KIM1025-aspect-source-11.zip](KIM1025-aspect-source-11.zip)
-- [KIM1025-aspect-source-12.zip](KIM1025-aspect-source-12.zip)
-- [KIM1025-aspect-source-13.zip](KIM1025-aspect-source-13.zip)
-- [KIM1025-aspect-source-14.zip](KIM1025-aspect-source-14.zip)
-- [KIM1025-aspect-source-15.zip](KIM1025-aspect-source-15.zip)
-- [KIM1025-aspect-source-16.zip](KIM1025-aspect-source-16.zip)
-- [KIM1025-aspect-source-17.zip](KIM1025-aspect-source-17.zip)
-- [KIM1025-aspect-source-18.zip](KIM1025-aspect-source-18.zip)
-- [KIM1025-aspect-source-19.zip](KIM1025-aspect-source-19.zip)
-- [KIM1025-aspect-source-20.zip](KIM1025-aspect-source-20.zip)
-- [KIM1025-aspect-source-21.zip](KIM1025-aspect-source-21.zip)
-- [KIM1025-aspect-source-22.zip](KIM1025-aspect-source-22.zip)
-- [KIM1025-aspect-source-23.zip](KIM1025-aspect-source-23.zip)
-- [KIM1025-ultrawide-source-01.zip](KIM1025-ultrawide-source-01.zip)
-- [KIM1025-ultrawide-source-02.zip](KIM1025-ultrawide-source-02.zip)
-- [KIM1025-ultrawide-source-03.zip](KIM1025-ultrawide-source-03.zip)
-- [KIM1025-ultrawide-source-04.zip](KIM1025-ultrawide-source-04.zip)
-- [KIM1025-ultrawide-source-05.zip](KIM1025-ultrawide-source-05.zip)
-- [KIM1025-ultrawide-source-06.zip](KIM1025-ultrawide-source-06.zip)
-- [KIM1025-ultrawide-source-07.zip](KIM1025-ultrawide-source-07.zip)
-- [KIM1025-ultrawide-source-08.zip](KIM1025-ultrawide-source-08.zip)
-- [KIM1025-ultrawide-source-09.zip](KIM1025-ultrawide-source-09.zip)
-- [KIM1025-ultrawide-source-10.zip](KIM1025-ultrawide-source-10.zip)
-- [KIM1025-ultrawide-source-11.zip](KIM1025-ultrawide-source-11.zip)
-- [KIM1025-ultrawide-source-12.zip](KIM1025-ultrawide-source-12.zip)
-- [KIM1025-ultrawide-source-13.zip](KIM1025-ultrawide-source-13.zip)
-- [KIM1025-ultrawide-source-14.zip](KIM1025-ultrawide-source-14.zip)
-- [KIM1025-ultrawide-source-15.zip](KIM1025-ultrawide-source-15.zip)
+Validation: 17 runnable headless suites and 86 Lua syntax checks pass, including 426 downloader-flow and 90 production ZIP/cache checks. The installed Mac LÖVE runtime passed 12 full-pack checks, verified all 216 file hashes, and decoded all three aspect formats. Full ROM gameplay and physical phone testing remain unverified.
 
-Extract all listed archives into the same directory to assemble the complete `kim1025` source tree. Older backdrop and widescreen source archives are obsolete. The release ZIP contains everything needed to install in one file.
-
-Replace the previous mod folder and retain your downloaded KIM asset cache. See `ULTRAWIDE-ART.md` in the source for authoring and validation details.
+[KIM1025-source.zip](KIM1025-source.zip) contains the source and small bundled assets. To assemble a full development tree, extract it, then extract the artwork ZIP from release v1.7.3 inside its kim1025 folder. Older split artwork archives remain for historical source reconstruction.
