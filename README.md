@@ -1,3 +1,17 @@
+# KIM1025 1.7.35
+
+Allow Menu Customizer 3.2.28 to draw Pokémon names directly at the final HUD resolution, eliminating uneven font pixels introduced by the old 1.5-pixel name capture.
+
+- Pass only supported names to Menu Customizer and draw them once after the native HUD and party icons. Use the existing HUD band coordinates, size, opacity and DPI geometry.
+- The level, HP, party balls, sprite anchors, battle frames and background geometry keep their existing paths. Without the new Menu Customizer presenter, use the original full HUD capture.
+- Restore the cooperative name queue after each capture, including failures. Gen 2/3 and other renderers retain their existing HUD behavior.
+
+Validation: 887,570 production HUD/name graphics checks with native Emerald reference glyphs, repeated-letter equality, native HP comparisons and DPI/error/fallback coverage; all KIM compilation/regression suites; all 11 game startup/settings routes with Menu Customizer; existing battle composition checks. Live ROM gameplay was not exercised.
+
+Install Menu Customizer 3.2.28 alongside this release and restart.
+
+## Previous release notes
+
 # KIM1025 1.7.34
 
 Avoid a duplicate battle frame when Menu Customizer owns Gen 3 panels.
