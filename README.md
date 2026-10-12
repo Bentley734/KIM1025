@@ -1,4 +1,4 @@
-# KIM1025 1.7.27
+# KIM1025 1.7.28
 
 KIM1025 now keeps four features:
 
@@ -62,6 +62,12 @@ The recent move-menu visual changes now belong to Menu Customizer 3.2.0, which i
 
 ## Auto player battle size
 
-Select **KIM1025 > PLAYER POKEMON SIZE > AUTO** for desktop HD and Native Fit battles in Red/Blue/Yellow. Auto fits the entire selected sprite animation within a balanced player area and clears the enemy name/HP and player status panels. It measures transparent atlas padding independently of the feet and retains the mound anchor, idle animation and send-out growth. The lower dialog/command UI renders after the sprite, so its feet can remain on the mound behind that panel. Manual sizes, trainers, opponents and mobile positioning are unchanged.
+Select **KIM1025 > PLAYER POKEMON SIZE > AUTO** for desktop HD and Native Fit battles in Red/Blue/Yellow. Auto uses all available space above the player mound and below the enemy name/HP band, stopping only at screen edges or the player status panel. There are no window-percentage size caps. It sizes the complete visible animation union, rather than transparent picture-box padding. It measures transparent atlas padding independently of the feet and retains the mound anchor, idle animation and send-out growth. The lower dialog/command UI renders after the sprite, so its feet can remain on the mound behind that panel. Manual sizes, trainers, opponents and mobile positioning are unchanged.
 
 Use 1025Dex 1.2.41 for stable animation-union bounds and intentional hover padding. Existing downloads are reused. Auto is opt-in; restart after updating both mods.
+
+## 1.7.28 — Auto fills the available space
+
+The previous Auto was capped at 36% of window width and 38% of height. Those limits are removed. The fit now fills the actual gap from the mound to the enemy name/HP band with only a two-pixel rounding margin, unless sprite width reaches a screen edge or player status panel first. Padded ROM/static fallback pictures are measured by their opaque pixels and centred by visible bounds; empty margins never reduce their size. Mound anchors, manual sizes, trainer/enemy controls, mobile placement and animation transforms are retained.
+
+Restart after updating. Keep PLAYER POKEMON SIZE on AUTO. 1025Dex 1.2.41 remains compatible and needs no update.
