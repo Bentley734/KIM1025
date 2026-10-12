@@ -1,4 +1,4 @@
-# KIM1025 1.7.29
+# KIM1025 1.7.30
 
 KIM1025 now keeps four features:
 
@@ -84,3 +84,16 @@ Keep Emerald battle fonts crisp with Menu Customizer 3.2.15.
 Update Menu Customizer to 3.2.15 alongside this release. Restart after updating. Downloaded artwork remains usable.
 
 Validation: production routing/capture regression checks, actual Windows LOVE pixel comparisons at desktop, ultrawide and portrait sizes, composed border/font comparisons, all KIM suites and eleven-game startup checks with Menu Customizer. Live game window capture timed out; gameplay was not verified.
+
+## 1.7.30 — trainer size cap and dialogue anchor
+
+Fix oversized trainers in maximized ultrawide windows and the gap above battle dialogue.
+
+- Fit the desktop trainer against both window width and height instead of width alone. The default Red trainer at 5120x1440 has about 512px of visible height instead of 1024px.
+- Keep the size setting, with a visible-height safety cap so the trainer stays on-screen.
+- Align the visible trainer bottom with the final dialogue frame, including transparent sprite padding and the border's clear top row.
+- Preserve horizontal mound positioning, send-out slide timing, mobile calibration and native/external UI fallbacks.
+
+Restart after updating. Menu Customizer 3.2.15 remains compatible; no asset download is needed.
+
+Validation: production trainer placement and cap checks in Lua 5.3/LuaJIT; real Windows LOVE renders using Ash and Red static artwork and all five atlas frames, visible-pixel measurements and the selected dialogue border at normal, 1080p and 5120x1440 sizes; all KIM regression suites and eleven-game startup checks with Menu Customizer. Live ROM gameplay was not exercised.
