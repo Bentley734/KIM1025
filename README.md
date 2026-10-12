@@ -1,3 +1,17 @@
+# KIM1025 1.7.34
+
+Avoid a duplicate battle frame when Menu Customizer owns Gen 3 panels.
+
+- Skip KIM's auxiliary full-width dialogue backing when Menu Customizer 3.2.22 supplies the complete native foreground panel layout. The native foreground, trainer, Pokémon, effects and healthboxes still render normally.
+- Retain the original backing fallback when Menu Customizer is missing or disabled, including both mod lookup calling conventions.
+- Preserve aspect-specific HD arenas and all sprite anchors.
+
+Use Menu Customizer 3.2.22 alongside this release for the Emerald panel ownership fix, menu backgrounds, expanded palettes and retro transitions. Restart after updating.
+
+Validation: production ownership guard and standalone fallback tests, all KIM suites and compilation, 11-game startup integration and actual split-panel rendering checks. Live ROM gameplay was not exercised.
+
+## Previous release notes
+
 # KIM1025 1.7.33
 
 KIM1025 now keeps four features:
