@@ -1,4 +1,4 @@
-# KIM1025 1.7.31
+# KIM1025 1.7.32
 
 KIM1025 now keeps four features:
 
@@ -107,3 +107,15 @@ Add four logical rows above the high-resolution battle HUD capture for enlarged 
 Update Menu Customizer to 3.2.16 and restart. Downloaded artwork remains usable.
 
 Validation: original level-font pixel comparison, actual Windows LOVE high-resolution HUD and final text checks, trainer artwork checks, all KIM regression suites and eleven-game startup checks. Live ROM gameplay was not exercised.
+
+## 1.7.32 — Ruby/Sapphire presentation
+
+Fix HD battle surround and KIM settings in Ruby/Sapphire.
+
+- Extend the HD backdrop to the full active viewport rather than clipping it to the fitted 240x160 rectangle, removing the white/gray surround. Native foreground sprites, battle effects and UI retain their existing placement.
+- Integrate KIM's settings with the actual RS Options page and retain its game/session context when opening from Start.
+- Keep modal-menu ownership, older-engine fallbacks, trainer sizing and Gen 1/2 presentation.
+
+Update Menu Customizer to 3.2.17 alongside this release for selector colours, transparent Options replay and complete native RS healthbox names. Restart after updating. Downloaded artwork remains usable.
+
+Validation: real HD artwork covers normal, 1080p, ultrawide and portrait viewport edges; actual Ruby/Sapphire Options settings open and persist; all KIM suites, Lua compilation and eleven-game startup checks pass. Live ROM gameplay was not exercised.
