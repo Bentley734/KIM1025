@@ -1,4 +1,4 @@
-# KIM1025 1.7.30
+# KIM1025 1.7.31
 
 KIM1025 now keeps four features:
 
@@ -97,3 +97,13 @@ Fix oversized trainers in maximized ultrawide windows and the gap above battle d
 Restart after updating. Menu Customizer 3.2.15 remains compatible; no asset download is needed.
 
 Validation: production trainer placement and cap checks in Lua 5.3/LuaJIT; real Windows LOVE renders using Ash and Red static artwork and all five atlas frames, visible-pixel measurements and the selected dialogue border at normal, 1080p and 5120x1440 sizes; all KIM regression suites and eleven-game startup checks with Menu Customizer. Live ROM gameplay was not exercised.
+
+## 1.7.31 — enlarged HUD names
+
+Keep larger Pokemon names crisp and unclipped with Menu Customizer 3.2.16.
+
+Add four logical rows above the high-resolution battle HUD capture for enlarged name glyphs. Compensate the HUD crops and gauge shader coordinates so levels, HP bars and party balls keep their existing positions. Retain final-resolution battle text, the trainer cap and gap fix.
+
+Update Menu Customizer to 3.2.16 and restart. Downloaded artwork remains usable.
+
+Validation: original level-font pixel comparison, actual Windows LOVE high-resolution HUD and final text checks, trainer artwork checks, all KIM regression suites and eleven-game startup checks. Live ROM gameplay was not exercised.
