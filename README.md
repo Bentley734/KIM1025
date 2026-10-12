@@ -1,4 +1,4 @@
-# KIM1025 1.7.28
+# KIM1025 1.7.29
 
 KIM1025 now keeps four features:
 
@@ -71,3 +71,16 @@ Use 1025Dex 1.2.41 for stable animation-union bounds and intentional hover paddi
 The previous Auto was capped at 36% of window width and 38% of height. Those limits are removed. The fit now fills the actual gap from the mound to the enemy name/HP band with only a two-pixel rounding margin, unless sprite width reaches a screen edge or player status panel first. Padded ROM/static fallback pictures are measured by their opaque pixels and centred by visible bounds; empty margins never reduce their size. Mound anchors, manual sizes, trainer/enemy controls, mobile placement and animation transforms are retained.
 
 Restart after updating. Keep PLAYER POKEMON SIZE on AUTO. 1025Dex 1.2.41 remains compatible and needs no update.
+
+## 1.7.29 — Emerald battle text
+
+Keep Emerald battle fonts crisp with Menu Customizer 3.2.15.
+
+- Draw commands and dialogue at their final display size instead of shrinking them into the 160px Game Boy canvas first.
+- Remove the old source text copy when Menu Customizer owns the final text pass.
+- Preserve all original Emerald HUD glyph pixels with a doubled capture surface while keeping the existing HUD and party-ball positions.
+- Retain the native text path when the new presenter is unavailable and retain existing sprite, mound and mobile positioning.
+
+Update Menu Customizer to 3.2.15 alongside this release. Restart after updating. Downloaded artwork remains usable.
+
+Validation: production routing/capture regression checks, actual Windows LOVE pixel comparisons at desktop, ultrawide and portrait sizes, composed border/font comparisons, all KIM suites and eleven-game startup checks with Menu Customizer. Live game window capture timed out; gameplay was not verified.
