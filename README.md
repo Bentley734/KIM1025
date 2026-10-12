@@ -1,4 +1,4 @@
-# KIM1025 1.7.32
+# KIM1025 1.7.33
 
 KIM1025 now keeps four features:
 
@@ -119,3 +119,15 @@ Fix HD battle surround and KIM settings in Ruby/Sapphire.
 Update Menu Customizer to 3.2.17 alongside this release for selector colours, transparent Options replay and complete native RS healthbox names. Restart after updating. Downloaded artwork remains usable.
 
 Validation: real HD artwork covers normal, 1080p, ultrawide and portrait viewport edges; actual Ruby/Sapphire Options settings open and persist; all KIM suites, Lua compilation and eleven-game startup checks pass. Live ROM gameplay was not exercised.
+
+## 1.7.33
+
+Restore aspect-specific HD battle backgrounds and close the native Gen 3 trainer gap.
+
+- Select portrait, widescreen or ultrawide extended artwork before the original background, including after resizing. Use its embedded source-frame metadata so existing mound anchors remain authoritative.
+- Remove transparent bottom rows from each native player trainer frame and meet the dialogue border. Preserve horizontal placement and throw animation offsets; leave Pokémon, healthboxes and effects unchanged.
+- Retain original-art fallback and full-viewport coverage.
+
+Install Menu Customizer 3.2.18 for a Battle Text Color picker with black as the default. Restart the game after updating. Existing downloaded art packs remain usable.
+
+Validation: KIM regression suites and compilation, 11-game startup integration, real aspect-art selection and viewport coverage at normal/1080p/5120x1440 sizes, all cached male/female trainer frames for Ruby, Sapphire, Emerald, FireRed and LeafGreen. Live ROM gameplay was not exercised.
