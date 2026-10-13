@@ -1,3 +1,11 @@
+# KIM1025 1.7.36
+
+Built from GitHub's latest 1.7.35 release. Centre visible HD artwork in Gen 3 script-picture previews, including the starter confirmation box. Use cached union alpha bounds across the animation instead of centring the transparent atlas cell. Keep the animation anchor stable and retain existing battle sprite alignment.
+
+Validation: real GPU tests of the production HD preview, atlas bounds caching, cached Dex preview fallback and battle baselines; focused entry and Gen 3 update fixtures; startup with Menu Customizer across all eleven games. Restart the game after installing.
+
+Source: [kim1025](kim1025). Full source archive: [KIM1025-source.zip](KIM1025-source.zip).
+
 # KIM1025 1.7.35
 
 Allow Menu Customizer 3.2.28 to draw Pokémon names directly at the final HUD resolution, eliminating uneven font pixels introduced by the old 1.5-pixel name capture.

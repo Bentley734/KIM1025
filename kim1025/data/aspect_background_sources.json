@@ -1,0 +1,1010 @@
+[
+  {
+    "file": "cave_cerulean",
+    "aspect": "portrait",
+    "source_sha256": "8f3e16b313e134cd7a6ee5a36d7f2300ac03813259d85a55d5c53d7dfec98c38",
+    "path": "assets/battle/backgrounds/aspect/portrait/cave_cerulean.jpg",
+    "bytes": 3030260
+  },
+  {
+    "file": "cave_cerulean",
+    "aspect": "widescreen",
+    "source_sha256": "8f3e16b313e134cd7a6ee5a36d7f2300ac03813259d85a55d5c53d7dfec98c38",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cave_cerulean.jpg",
+    "bytes": 1355064
+  },
+  {
+    "file": "cave_dark",
+    "aspect": "portrait",
+    "source_sha256": "6a3cc8eee825c533e81f9b824aeae94a7bd0c5dc6f44e5ca9f6ccf1a7f171d0d",
+    "path": "assets/battle/backgrounds/aspect/portrait/cave_dark.jpg",
+    "bytes": 2850963
+  },
+  {
+    "file": "cave_dark",
+    "aspect": "widescreen",
+    "source_sha256": "6a3cc8eee825c533e81f9b824aeae94a7bd0c5dc6f44e5ca9f6ccf1a7f171d0d",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cave_dark.jpg",
+    "bytes": 1279711
+  },
+  {
+    "file": "cave_seafoam",
+    "aspect": "portrait",
+    "source_sha256": "48f85a4d42344a18183848bba02954a9f8d613d8d07178a730b5ca0f0e8e2efe",
+    "path": "assets/battle/backgrounds/aspect/portrait/cave_seafoam.jpg",
+    "bytes": 3457913
+  },
+  {
+    "file": "cave_seafoam",
+    "aspect": "widescreen",
+    "source_sha256": "48f85a4d42344a18183848bba02954a9f8d613d8d07178a730b5ca0f0e8e2efe",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cave_seafoam.jpg",
+    "bytes": 1587330
+  },
+  {
+    "file": "cave_victory_road",
+    "aspect": "portrait",
+    "source_sha256": "c53e0cd2d78e7aa1033f8a2facf1964f894a2e07cf416a3a6edb655d438ef48d",
+    "path": "assets/battle/backgrounds/aspect/portrait/cave_victory_road.jpg",
+    "bytes": 2996423
+  },
+  {
+    "file": "cave_victory_road",
+    "aspect": "widescreen",
+    "source_sha256": "c53e0cd2d78e7aa1033f8a2facf1964f894a2e07cf416a3a6edb655d438ef48d",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cave_victory_road.jpg",
+    "bytes": 1400533
+  },
+  {
+    "file": "cerulean_bridge_day",
+    "aspect": "portrait",
+    "source_sha256": "6c58144c7c97fd42596fae9df62411db2189be8371781210f5852ef06db516e8",
+    "path": "assets/battle/backgrounds/aspect/portrait/cerulean_bridge_day.jpg",
+    "bytes": 3640741
+  },
+  {
+    "file": "cerulean_bridge_day",
+    "aspect": "widescreen",
+    "source_sha256": "6c58144c7c97fd42596fae9df62411db2189be8371781210f5852ef06db516e8",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cerulean_bridge_day.jpg",
+    "bytes": 1660294
+  },
+  {
+    "file": "cerulean_bridge_night",
+    "aspect": "portrait",
+    "source_sha256": "223f830060f5bc4a2254b0cfaa2dbb4dbe301977a533dfe72a364b5654bc0c7e",
+    "path": "assets/battle/backgrounds/aspect/portrait/cerulean_bridge_night.jpg",
+    "bytes": 2952690
+  },
+  {
+    "file": "cerulean_bridge_night",
+    "aspect": "widescreen",
+    "source_sha256": "223f830060f5bc4a2254b0cfaa2dbb4dbe301977a533dfe72a364b5654bc0c7e",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cerulean_bridge_night.jpg",
+    "bytes": 1299447
+  },
+  {
+    "file": "cerulean_bridge_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "2f831de2abfab85218dcadf4b30e3127c73bef318a5ed8da2d8a44a8127a6754",
+    "path": "assets/battle/backgrounds/aspect/portrait/cerulean_bridge_sunrise.jpg",
+    "bytes": 3600081
+  },
+  {
+    "file": "cerulean_bridge_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "2f831de2abfab85218dcadf4b30e3127c73bef318a5ed8da2d8a44a8127a6754",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cerulean_bridge_sunrise.jpg",
+    "bytes": 1651490
+  },
+  {
+    "file": "cerulean_bridge_sunset",
+    "aspect": "portrait",
+    "source_sha256": "084203c62de52096f14fdb71adec01bc1eebcbd5041e97c7ff059c7ee125a0e9",
+    "path": "assets/battle/backgrounds/aspect/portrait/cerulean_bridge_sunset.jpg",
+    "bytes": 3524253
+  },
+  {
+    "file": "cerulean_bridge_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "084203c62de52096f14fdb71adec01bc1eebcbd5041e97c7ff059c7ee125a0e9",
+    "path": "assets/battle/backgrounds/aspect/widescreen/cerulean_bridge_sunset.jpg",
+    "bytes": 1613793
+  },
+  {
+    "file": "grass_day",
+    "aspect": "portrait",
+    "source_sha256": "b0b55aa62951d3cf1975d32c7f597f1d0700ab1dde8d98aa0077805c59a1fd10",
+    "path": "assets/battle/backgrounds/aspect/portrait/grass_day.jpg",
+    "bytes": 3442362
+  },
+  {
+    "file": "grass_day",
+    "aspect": "widescreen",
+    "source_sha256": "b0b55aa62951d3cf1975d32c7f597f1d0700ab1dde8d98aa0077805c59a1fd10",
+    "path": "assets/battle/backgrounds/aspect/widescreen/grass_day.jpg",
+    "bytes": 1575033
+  },
+  {
+    "file": "grass_night",
+    "aspect": "portrait",
+    "source_sha256": "e0fa73c8fda44610eb68aa9166b2d788df78c8e7b2f528a3fb63ef12bef49e6b",
+    "path": "assets/battle/backgrounds/aspect/portrait/grass_night.jpg",
+    "bytes": 2812447
+  },
+  {
+    "file": "grass_night",
+    "aspect": "widescreen",
+    "source_sha256": "e0fa73c8fda44610eb68aa9166b2d788df78c8e7b2f528a3fb63ef12bef49e6b",
+    "path": "assets/battle/backgrounds/aspect/widescreen/grass_night.jpg",
+    "bytes": 1269615
+  },
+  {
+    "file": "grass_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "67d345b6d8b22839745c263e9861cd09691fdb511382b612ca6fa957b7a4f832",
+    "path": "assets/battle/backgrounds/aspect/portrait/grass_sunrise.jpg",
+    "bytes": 3392894
+  },
+  {
+    "file": "grass_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "67d345b6d8b22839745c263e9861cd09691fdb511382b612ca6fa957b7a4f832",
+    "path": "assets/battle/backgrounds/aspect/widescreen/grass_sunrise.jpg",
+    "bytes": 1564201
+  },
+  {
+    "file": "grass_sunset",
+    "aspect": "portrait",
+    "source_sha256": "fc84c94a9f99e98cb47cedb09b70fa291841d49d8d52ef2fa4566fd93b84b085",
+    "path": "assets/battle/backgrounds/aspect/portrait/grass_sunset.jpg",
+    "bytes": 3379632
+  },
+  {
+    "file": "grass_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "fc84c94a9f99e98cb47cedb09b70fa291841d49d8d52ef2fa4566fd93b84b085",
+    "path": "assets/battle/backgrounds/aspect/widescreen/grass_sunset.jpg",
+    "bytes": 1581901
+  },
+  {
+    "file": "gym_celadon",
+    "aspect": "portrait",
+    "source_sha256": "1e9068c4bd907803d76070941d2b73903eb2931857aaa54bd712bf386bbc1d74",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_celadon.jpg",
+    "bytes": 2789751
+  },
+  {
+    "file": "gym_celadon",
+    "aspect": "widescreen",
+    "source_sha256": "1e9068c4bd907803d76070941d2b73903eb2931857aaa54bd712bf386bbc1d74",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_celadon.jpg",
+    "bytes": 1287583
+  },
+  {
+    "file": "gym_cerulean",
+    "aspect": "portrait",
+    "source_sha256": "1d86d5c20cabee1f250249971835d1f9dc7db4ec43540f52189d6305b8b49831",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_cerulean.jpg",
+    "bytes": 2540984
+  },
+  {
+    "file": "gym_cerulean",
+    "aspect": "widescreen",
+    "source_sha256": "1d86d5c20cabee1f250249971835d1f9dc7db4ec43540f52189d6305b8b49831",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_cerulean.jpg",
+    "bytes": 1159857
+  },
+  {
+    "file": "gym_cinnabar",
+    "aspect": "portrait",
+    "source_sha256": "7c358cb25c2256a81b6811ff80c9c024d9612b6a44e660ea2ce996b81d7ff2dc",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_cinnabar.jpg",
+    "bytes": 2841366
+  },
+  {
+    "file": "gym_cinnabar",
+    "aspect": "widescreen",
+    "source_sha256": "7c358cb25c2256a81b6811ff80c9c024d9612b6a44e660ea2ce996b81d7ff2dc",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_cinnabar.jpg",
+    "bytes": 1301246
+  },
+  {
+    "file": "gym_fuchsia",
+    "aspect": "portrait",
+    "source_sha256": "f61b13ccf3b407c3627a58c7f35b08b7b12f812cbba1643c91dbae37b04cb0f1",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_fuchsia.jpg",
+    "bytes": 2396505
+  },
+  {
+    "file": "gym_fuchsia",
+    "aspect": "widescreen",
+    "source_sha256": "f61b13ccf3b407c3627a58c7f35b08b7b12f812cbba1643c91dbae37b04cb0f1",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_fuchsia.jpg",
+    "bytes": 1066859
+  },
+  {
+    "file": "gym_pewter",
+    "aspect": "portrait",
+    "source_sha256": "eede9749d1dae3bc35b97cb0a0313e963b57d217d80098278342428f3afdc888",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_pewter.jpg",
+    "bytes": 2408882
+  },
+  {
+    "file": "gym_pewter",
+    "aspect": "widescreen",
+    "source_sha256": "eede9749d1dae3bc35b97cb0a0313e963b57d217d80098278342428f3afdc888",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_pewter.jpg",
+    "bytes": 1031082
+  },
+  {
+    "file": "gym_saffron_fighting",
+    "aspect": "portrait",
+    "source_sha256": "87144605f05130f448b8e2aed3c753af0181c8b23cd71e4f17117c576879d3bc",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_saffron_fighting.jpg",
+    "bytes": 2314629
+  },
+  {
+    "file": "gym_saffron_fighting",
+    "aspect": "widescreen",
+    "source_sha256": "87144605f05130f448b8e2aed3c753af0181c8b23cd71e4f17117c576879d3bc",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_saffron_fighting.jpg",
+    "bytes": 1046598
+  },
+  {
+    "file": "gym_saffron_psychic",
+    "aspect": "portrait",
+    "source_sha256": "30f648c8a799eafbd6d24828c8913ce1c7783e814e5f4b6b63c7e080abf06568",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_saffron_psychic.jpg",
+    "bytes": 2447882
+  },
+  {
+    "file": "gym_saffron_psychic",
+    "aspect": "widescreen",
+    "source_sha256": "30f648c8a799eafbd6d24828c8913ce1c7783e814e5f4b6b63c7e080abf06568",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_saffron_psychic.jpg",
+    "bytes": 1055106
+  },
+  {
+    "file": "gym_vermilion",
+    "aspect": "portrait",
+    "source_sha256": "9ffb7b02d9e3c5f9f0b76c1ab875768c29a3581d359c68155aac6181629ddcc2",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_vermilion.jpg",
+    "bytes": 2458329
+  },
+  {
+    "file": "gym_vermilion",
+    "aspect": "widescreen",
+    "source_sha256": "9ffb7b02d9e3c5f9f0b76c1ab875768c29a3581d359c68155aac6181629ddcc2",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_vermilion.jpg",
+    "bytes": 1072966
+  },
+  {
+    "file": "gym_viridian",
+    "aspect": "portrait",
+    "source_sha256": "230c7ef585818c9e18221e26987c99cf8d8a3b87315ae9985de8ab47c79a18b8",
+    "path": "assets/battle/backgrounds/aspect/portrait/gym_viridian.jpg",
+    "bytes": 2850152
+  },
+  {
+    "file": "gym_viridian",
+    "aspect": "widescreen",
+    "source_sha256": "230c7ef585818c9e18221e26987c99cf8d8a3b87315ae9985de8ab47c79a18b8",
+    "path": "assets/battle/backgrounds/aspect/widescreen/gym_viridian.jpg",
+    "bytes": 1254343
+  },
+  {
+    "file": "league_agatha",
+    "aspect": "portrait",
+    "source_sha256": "6685f8860e4347f97486a37d0c9759ff1e240124920632d23132c60f5bb3dd30",
+    "path": "assets/battle/backgrounds/aspect/portrait/league_agatha.jpg",
+    "bytes": 2466597
+  },
+  {
+    "file": "league_agatha",
+    "aspect": "widescreen",
+    "source_sha256": "6685f8860e4347f97486a37d0c9759ff1e240124920632d23132c60f5bb3dd30",
+    "path": "assets/battle/backgrounds/aspect/widescreen/league_agatha.jpg",
+    "bytes": 1070705
+  },
+  {
+    "file": "league_bruno",
+    "aspect": "portrait",
+    "source_sha256": "3e114dbeb352cda93b0891c02ff0509483175e7a475a0518759ab62705e46b95",
+    "path": "assets/battle/backgrounds/aspect/portrait/league_bruno.jpg",
+    "bytes": 2460748
+  },
+  {
+    "file": "league_bruno",
+    "aspect": "widescreen",
+    "source_sha256": "3e114dbeb352cda93b0891c02ff0509483175e7a475a0518759ab62705e46b95",
+    "path": "assets/battle/backgrounds/aspect/widescreen/league_bruno.jpg",
+    "bytes": 1071628
+  },
+  {
+    "file": "league_champion",
+    "aspect": "portrait",
+    "source_sha256": "f539b7d712bd87d394544b924b7b6fae0d764a6eafea0d5b8f01b6b9b85784ee",
+    "path": "assets/battle/backgrounds/aspect/portrait/league_champion.jpg",
+    "bytes": 2663627
+  },
+  {
+    "file": "league_champion",
+    "aspect": "widescreen",
+    "source_sha256": "f539b7d712bd87d394544b924b7b6fae0d764a6eafea0d5b8f01b6b9b85784ee",
+    "path": "assets/battle/backgrounds/aspect/widescreen/league_champion.jpg",
+    "bytes": 1202371
+  },
+  {
+    "file": "league_lance",
+    "aspect": "portrait",
+    "source_sha256": "3ac13ade1e81fdd3f7711fd7fdac06bea8607fa2ce36a3d90d6e63c8012544e7",
+    "path": "assets/battle/backgrounds/aspect/portrait/league_lance.jpg",
+    "bytes": 2803450
+  },
+  {
+    "file": "league_lance",
+    "aspect": "widescreen",
+    "source_sha256": "3ac13ade1e81fdd3f7711fd7fdac06bea8607fa2ce36a3d90d6e63c8012544e7",
+    "path": "assets/battle/backgrounds/aspect/widescreen/league_lance.jpg",
+    "bytes": 1244896
+  },
+  {
+    "file": "league_lorelei",
+    "aspect": "portrait",
+    "source_sha256": "90dc912d8684b9b04cfbae8a044a93439efceccd9018e0e079943c8ab7765ff3",
+    "path": "assets/battle/backgrounds/aspect/portrait/league_lorelei.jpg",
+    "bytes": 2604619
+  },
+  {
+    "file": "league_lorelei",
+    "aspect": "widescreen",
+    "source_sha256": "90dc912d8684b9b04cfbae8a044a93439efceccd9018e0e079943c8ab7765ff3",
+    "path": "assets/battle/backgrounds/aspect/widescreen/league_lorelei.jpg",
+    "bytes": 1173420
+  },
+  {
+    "file": "mt_moon_day",
+    "aspect": "portrait",
+    "source_sha256": "35839899827fa3bab430bb537ac62f7d4c281845b68b78d32c34787a779586c4",
+    "path": "assets/battle/backgrounds/aspect/portrait/mt_moon_day.jpg",
+    "bytes": 2917832
+  },
+  {
+    "file": "mt_moon_day",
+    "aspect": "widescreen",
+    "source_sha256": "35839899827fa3bab430bb537ac62f7d4c281845b68b78d32c34787a779586c4",
+    "path": "assets/battle/backgrounds/aspect/widescreen/mt_moon_day.jpg",
+    "bytes": 1295632
+  },
+  {
+    "file": "mt_moon_night",
+    "aspect": "portrait",
+    "source_sha256": "8ac8f88e04298a6c2b1d514d516a19aff61ebc930a8acfe065a24459629ecba2",
+    "path": "assets/battle/backgrounds/aspect/portrait/mt_moon_night.jpg",
+    "bytes": 2480711
+  },
+  {
+    "file": "mt_moon_night",
+    "aspect": "widescreen",
+    "source_sha256": "8ac8f88e04298a6c2b1d514d516a19aff61ebc930a8acfe065a24459629ecba2",
+    "path": "assets/battle/backgrounds/aspect/widescreen/mt_moon_night.jpg",
+    "bytes": 1101893
+  },
+  {
+    "file": "mt_moon_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "e80288ab6c133aed3c61582b0291a3afe04cb3ce89fa55e041488ef118b4d4f6",
+    "path": "assets/battle/backgrounds/aspect/portrait/mt_moon_sunrise.jpg",
+    "bytes": 2993469
+  },
+  {
+    "file": "mt_moon_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "e80288ab6c133aed3c61582b0291a3afe04cb3ce89fa55e041488ef118b4d4f6",
+    "path": "assets/battle/backgrounds/aspect/widescreen/mt_moon_sunrise.jpg",
+    "bytes": 1385500
+  },
+  {
+    "file": "mt_moon_sunset",
+    "aspect": "portrait",
+    "source_sha256": "94d8f3f6b0f226dea8397c569704b8dd39f37bb0efafd58c0d44c95d00ed16ad",
+    "path": "assets/battle/backgrounds/aspect/portrait/mt_moon_sunset.jpg",
+    "bytes": 2989121
+  },
+  {
+    "file": "mt_moon_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "94d8f3f6b0f226dea8397c569704b8dd39f37bb0efafd58c0d44c95d00ed16ad",
+    "path": "assets/battle/backgrounds/aspect/widescreen/mt_moon_sunset.jpg",
+    "bytes": 1394740
+  },
+  {
+    "file": "oak_lab_day",
+    "aspect": "portrait",
+    "source_sha256": "6c1323221d41b9de94dcb214924a01aa50c01cc80a65247c86ca0709bf5f9fdf",
+    "path": "assets/battle/backgrounds/aspect/portrait/oak_lab_day.jpg",
+    "bytes": 2173309
+  },
+  {
+    "file": "oak_lab_day",
+    "aspect": "widescreen",
+    "source_sha256": "6c1323221d41b9de94dcb214924a01aa50c01cc80a65247c86ca0709bf5f9fdf",
+    "path": "assets/battle/backgrounds/aspect/widescreen/oak_lab_day.jpg",
+    "bytes": 1015950
+  },
+  {
+    "file": "oak_lab_night",
+    "aspect": "portrait",
+    "source_sha256": "29c9eab48dbedb6b6d92bce6534421b2ef7b668d960f23b715d50b77c9be7d48",
+    "path": "assets/battle/backgrounds/aspect/portrait/oak_lab_night.jpg",
+    "bytes": 1797191
+  },
+  {
+    "file": "oak_lab_night",
+    "aspect": "widescreen",
+    "source_sha256": "29c9eab48dbedb6b6d92bce6534421b2ef7b668d960f23b715d50b77c9be7d48",
+    "path": "assets/battle/backgrounds/aspect/widescreen/oak_lab_night.jpg",
+    "bytes": 835802
+  },
+  {
+    "file": "oak_lab_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "39cd0fae0439d2f66119034bcf71ae8e94da45a7ef116e86573642059a654d89",
+    "path": "assets/battle/backgrounds/aspect/portrait/oak_lab_sunrise.jpg",
+    "bytes": 2136246
+  },
+  {
+    "file": "oak_lab_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "39cd0fae0439d2f66119034bcf71ae8e94da45a7ef116e86573642059a654d89",
+    "path": "assets/battle/backgrounds/aspect/widescreen/oak_lab_sunrise.jpg",
+    "bytes": 1008823
+  },
+  {
+    "file": "oak_lab_sunset",
+    "aspect": "portrait",
+    "source_sha256": "ec1f6e5ee128da6a691e1283d528e7610dc1e84d813205e520d0ed85eee2b9d7",
+    "path": "assets/battle/backgrounds/aspect/portrait/oak_lab_sunset.jpg",
+    "bytes": 2102528
+  },
+  {
+    "file": "oak_lab_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "ec1f6e5ee128da6a691e1283d528e7610dc1e84d813205e520d0ed85eee2b9d7",
+    "path": "assets/battle/backgrounds/aspect/widescreen/oak_lab_sunset.jpg",
+    "bytes": 1003317
+  },
+  {
+    "file": "pokemon_mansion_day",
+    "aspect": "portrait",
+    "source_sha256": "ee1f844aa35802f21fd7db6b025a7b6c81c65485b92b261b792e1026d6f08748",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_mansion_day.jpg",
+    "bytes": 3125535
+  },
+  {
+    "file": "pokemon_mansion_day",
+    "aspect": "widescreen",
+    "source_sha256": "ee1f844aa35802f21fd7db6b025a7b6c81c65485b92b261b792e1026d6f08748",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_mansion_day.jpg",
+    "bytes": 1343360
+  },
+  {
+    "file": "pokemon_mansion_night",
+    "aspect": "portrait",
+    "source_sha256": "a543a74512f6f9f00665b24f40ad93275df57458e05b1a1b748af03dc47ab7a5",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_mansion_night.jpg",
+    "bytes": 2740651
+  },
+  {
+    "file": "pokemon_mansion_night",
+    "aspect": "widescreen",
+    "source_sha256": "a543a74512f6f9f00665b24f40ad93275df57458e05b1a1b748af03dc47ab7a5",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_mansion_night.jpg",
+    "bytes": 1195386
+  },
+  {
+    "file": "pokemon_mansion_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "7b6b5f5b6b54f160ba22ef7890e1b9e755ec7009c5e0ba2804255b2112a1ff3e",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_mansion_sunrise.jpg",
+    "bytes": 3112230
+  },
+  {
+    "file": "pokemon_mansion_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "7b6b5f5b6b54f160ba22ef7890e1b9e755ec7009c5e0ba2804255b2112a1ff3e",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_mansion_sunrise.jpg",
+    "bytes": 1360632
+  },
+  {
+    "file": "pokemon_mansion_sunset",
+    "aspect": "portrait",
+    "source_sha256": "90f8489d31532257ad2f1afb7456ecdc35bff61b474efc24526ea29784aaeed1",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_mansion_sunset.jpg",
+    "bytes": 3108028
+  },
+  {
+    "file": "pokemon_mansion_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "90f8489d31532257ad2f1afb7456ecdc35bff61b474efc24526ea29784aaeed1",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_mansion_sunset.jpg",
+    "bytes": 1371569
+  },
+  {
+    "file": "pokemon_tower_day",
+    "aspect": "portrait",
+    "source_sha256": "fb8d065aba6297a4019ac02f552c34470596765cd3bc493ade758553c7e30133",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_tower_day.jpg",
+    "bytes": 2475098
+  },
+  {
+    "file": "pokemon_tower_day",
+    "aspect": "widescreen",
+    "source_sha256": "fb8d065aba6297a4019ac02f552c34470596765cd3bc493ade758553c7e30133",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_tower_day.jpg",
+    "bytes": 1050121
+  },
+  {
+    "file": "pokemon_tower_night",
+    "aspect": "portrait",
+    "source_sha256": "c489ed4f53accadcfea00ba25e8bb4dd1854f14bdbc1568def6f41b0c315f1d7",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_tower_night.jpg",
+    "bytes": 2152943
+  },
+  {
+    "file": "pokemon_tower_night",
+    "aspect": "widescreen",
+    "source_sha256": "c489ed4f53accadcfea00ba25e8bb4dd1854f14bdbc1568def6f41b0c315f1d7",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_tower_night.jpg",
+    "bytes": 930519
+  },
+  {
+    "file": "pokemon_tower_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "d261850b2b66278fb048bca509952a0e2bb03ed0899cd746128e2b72b2861986",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_tower_sunrise.jpg",
+    "bytes": 2506591
+  },
+  {
+    "file": "pokemon_tower_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "d261850b2b66278fb048bca509952a0e2bb03ed0899cd746128e2b72b2861986",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_tower_sunrise.jpg",
+    "bytes": 1101098
+  },
+  {
+    "file": "pokemon_tower_sunset",
+    "aspect": "portrait",
+    "source_sha256": "454f0f53d3b5b28bd5228ca85b101364d2061716051e1f177e7ce27408433725",
+    "path": "assets/battle/backgrounds/aspect/portrait/pokemon_tower_sunset.jpg",
+    "bytes": 2487057
+  },
+  {
+    "file": "pokemon_tower_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "454f0f53d3b5b28bd5228ca85b101364d2061716051e1f177e7ce27408433725",
+    "path": "assets/battle/backgrounds/aspect/widescreen/pokemon_tower_sunset.jpg",
+    "bytes": 1099930
+  },
+  {
+    "file": "power_plant_1",
+    "aspect": "portrait",
+    "source_sha256": "3f76823c89ad10aeb12d915aebed7e7204f3d91f2f24712d2b9173668fe12136",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_1.jpg",
+    "bytes": 2638595
+  },
+  {
+    "file": "power_plant_1",
+    "aspect": "widescreen",
+    "source_sha256": "3f76823c89ad10aeb12d915aebed7e7204f3d91f2f24712d2b9173668fe12136",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_1.jpg",
+    "bytes": 1166489
+  },
+  {
+    "file": "power_plant_2",
+    "aspect": "portrait",
+    "source_sha256": "bcf92591c176b8776c6244ef594b3992b737172011068563ec0c47adba06bc67",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_2.jpg",
+    "bytes": 2526662
+  },
+  {
+    "file": "power_plant_2",
+    "aspect": "widescreen",
+    "source_sha256": "bcf92591c176b8776c6244ef594b3992b737172011068563ec0c47adba06bc67",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_2.jpg",
+    "bytes": 1115636
+  },
+  {
+    "file": "power_plant_3",
+    "aspect": "portrait",
+    "source_sha256": "a48e6b00dcd141f9d199007aad908ecc931d8d4dde72f617bb3a354fb005def9",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_3.jpg",
+    "bytes": 2527221
+  },
+  {
+    "file": "power_plant_3",
+    "aspect": "widescreen",
+    "source_sha256": "a48e6b00dcd141f9d199007aad908ecc931d8d4dde72f617bb3a354fb005def9",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_3.jpg",
+    "bytes": 1127791
+  },
+  {
+    "file": "power_plant_4",
+    "aspect": "portrait",
+    "source_sha256": "8178b60956a9c1d4f0a8ef79d79c6e37c8a4d8018f8ae749284eb5a04f148011",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_4.jpg",
+    "bytes": 2652444
+  },
+  {
+    "file": "power_plant_4",
+    "aspect": "widescreen",
+    "source_sha256": "8178b60956a9c1d4f0a8ef79d79c6e37c8a4d8018f8ae749284eb5a04f148011",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_4.jpg",
+    "bytes": 1190916
+  },
+  {
+    "file": "power_plant_exterior_day",
+    "aspect": "portrait",
+    "source_sha256": "98160e08e418e6ad148b84ed6ac9227e90daae9095019e45e79a0833aa993ce4",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_exterior_day.jpg",
+    "bytes": 3614607
+  },
+  {
+    "file": "power_plant_exterior_day",
+    "aspect": "widescreen",
+    "source_sha256": "98160e08e418e6ad148b84ed6ac9227e90daae9095019e45e79a0833aa993ce4",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_exterior_day.jpg",
+    "bytes": 1619446
+  },
+  {
+    "file": "power_plant_exterior_night",
+    "aspect": "portrait",
+    "source_sha256": "2c01df53a057942da6803e0595f9a7f0af53c13b4c29afd12ddc4d1f5baa78b9",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_exterior_night.jpg",
+    "bytes": 2961107
+  },
+  {
+    "file": "power_plant_exterior_night",
+    "aspect": "widescreen",
+    "source_sha256": "2c01df53a057942da6803e0595f9a7f0af53c13b4c29afd12ddc4d1f5baa78b9",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_exterior_night.jpg",
+    "bytes": 1293344
+  },
+  {
+    "file": "power_plant_exterior_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "266652924227203f4b9e6da4f297107e5072171e95f8b71ab6cf36efa0a2171f",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_exterior_sunrise.jpg",
+    "bytes": 3552214
+  },
+  {
+    "file": "power_plant_exterior_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "266652924227203f4b9e6da4f297107e5072171e95f8b71ab6cf36efa0a2171f",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_exterior_sunrise.jpg",
+    "bytes": 1594230
+  },
+  {
+    "file": "power_plant_exterior_sunset",
+    "aspect": "portrait",
+    "source_sha256": "115461f5903eafceb1b3dffbdc316c83f749255e83043e0e4218eb09dd6cb132",
+    "path": "assets/battle/backgrounds/aspect/portrait/power_plant_exterior_sunset.jpg",
+    "bytes": 3491612
+  },
+  {
+    "file": "power_plant_exterior_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "115461f5903eafceb1b3dffbdc316c83f749255e83043e0e4218eb09dd6cb132",
+    "path": "assets/battle/backgrounds/aspect/widescreen/power_plant_exterior_sunset.jpg",
+    "bytes": 1573723
+  },
+  {
+    "file": "road_day",
+    "aspect": "portrait",
+    "source_sha256": "104a10574870e6bafed2f5b2ad7710eb1dfd816e7287c6f45d00e1cbf1bd75eb",
+    "path": "assets/battle/backgrounds/aspect/portrait/road_day.jpg",
+    "bytes": 3241655
+  },
+  {
+    "file": "road_day",
+    "aspect": "widescreen",
+    "source_sha256": "104a10574870e6bafed2f5b2ad7710eb1dfd816e7287c6f45d00e1cbf1bd75eb",
+    "path": "assets/battle/backgrounds/aspect/widescreen/road_day.jpg",
+    "bytes": 1470622
+  },
+  {
+    "file": "road_night",
+    "aspect": "portrait",
+    "source_sha256": "22af1908b94b632986780eec257d1d1ea0b751745c63c02c283775796254a73e",
+    "path": "assets/battle/backgrounds/aspect/portrait/road_night.jpg",
+    "bytes": 2679613
+  },
+  {
+    "file": "road_night",
+    "aspect": "widescreen",
+    "source_sha256": "22af1908b94b632986780eec257d1d1ea0b751745c63c02c283775796254a73e",
+    "path": "assets/battle/backgrounds/aspect/widescreen/road_night.jpg",
+    "bytes": 1222360
+  },
+  {
+    "file": "road_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "abaebd88c96305a9b1b9d3d6e46ef20c114d501d647d8d2f3c958db359422721",
+    "path": "assets/battle/backgrounds/aspect/portrait/road_sunrise.jpg",
+    "bytes": 3206778
+  },
+  {
+    "file": "road_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "abaebd88c96305a9b1b9d3d6e46ef20c114d501d647d8d2f3c958db359422721",
+    "path": "assets/battle/backgrounds/aspect/widescreen/road_sunrise.jpg",
+    "bytes": 1475938
+  },
+  {
+    "file": "road_sunset",
+    "aspect": "portrait",
+    "source_sha256": "e16d886fa9ebb4ff88d49fd5ae5e1ed76c62746c8edab76d771e9849e96ab029",
+    "path": "assets/battle/backgrounds/aspect/portrait/road_sunset.jpg",
+    "bytes": 3165581
+  },
+  {
+    "file": "road_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "e16d886fa9ebb4ff88d49fd5ae5e1ed76c62746c8edab76d771e9849e96ab029",
+    "path": "assets/battle/backgrounds/aspect/widescreen/road_sunset.jpg",
+    "bytes": 1487938
+  },
+  {
+    "file": "rocket_hideout",
+    "aspect": "portrait",
+    "source_sha256": "3a5954f7fb6afd7c627ea42207f72b1c9af510022083301ad0733d5ecd3279d9",
+    "path": "assets/battle/backgrounds/aspect/portrait/rocket_hideout.jpg",
+    "bytes": 2479142
+  },
+  {
+    "file": "rocket_hideout",
+    "aspect": "widescreen",
+    "source_sha256": "3a5954f7fb6afd7c627ea42207f72b1c9af510022083301ad0733d5ecd3279d9",
+    "path": "assets/battle/backgrounds/aspect/widescreen/rocket_hideout.jpg",
+    "bytes": 984317
+  },
+  {
+    "file": "safari_day",
+    "aspect": "portrait",
+    "source_sha256": "a9c1a4932c27e124fd9bf7009170ea8565ea11af788807ad5b515875036898dc",
+    "path": "assets/battle/backgrounds/aspect/portrait/safari_day.jpg",
+    "bytes": 3666749
+  },
+  {
+    "file": "safari_day",
+    "aspect": "widescreen",
+    "source_sha256": "a9c1a4932c27e124fd9bf7009170ea8565ea11af788807ad5b515875036898dc",
+    "path": "assets/battle/backgrounds/aspect/widescreen/safari_day.jpg",
+    "bytes": 1696217
+  },
+  {
+    "file": "safari_night",
+    "aspect": "portrait",
+    "source_sha256": "e6c0da51fec1c08b51edd9d37897458abb278e66fbe76408ca5514528d091349",
+    "path": "assets/battle/backgrounds/aspect/portrait/safari_night.jpg",
+    "bytes": 2974310
+  },
+  {
+    "file": "safari_night",
+    "aspect": "widescreen",
+    "source_sha256": "e6c0da51fec1c08b51edd9d37897458abb278e66fbe76408ca5514528d091349",
+    "path": "assets/battle/backgrounds/aspect/widescreen/safari_night.jpg",
+    "bytes": 1338043
+  },
+  {
+    "file": "safari_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "1d575a698bed1fa2b8a02664cbc5f7bd6a67b92b8c3950d8bbcc5fa30c895493",
+    "path": "assets/battle/backgrounds/aspect/portrait/safari_sunrise.jpg",
+    "bytes": 3607750
+  },
+  {
+    "file": "safari_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "1d575a698bed1fa2b8a02664cbc5f7bd6a67b92b8c3950d8bbcc5fa30c895493",
+    "path": "assets/battle/backgrounds/aspect/widescreen/safari_sunrise.jpg",
+    "bytes": 1681044
+  },
+  {
+    "file": "safari_sunset",
+    "aspect": "portrait",
+    "source_sha256": "e17ff0b301f8807b344cf36e5cbdcb1e40a13c93d2fb3924b7d1c09f8cbaf16b",
+    "path": "assets/battle/backgrounds/aspect/portrait/safari_sunset.jpg",
+    "bytes": 3575913
+  },
+  {
+    "file": "safari_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "e17ff0b301f8807b344cf36e5cbdcb1e40a13c93d2fb3924b7d1c09f8cbaf16b",
+    "path": "assets/battle/backgrounds/aspect/widescreen/safari_sunset.jpg",
+    "bytes": 1694426
+  },
+  {
+    "file": "sea_day",
+    "aspect": "portrait",
+    "source_sha256": "714dd898dbe4aa6eefef646f63dcbacc9f3f13aa2c8e5790487eff4168f185dc",
+    "path": "assets/battle/backgrounds/aspect/portrait/sea_day.jpg",
+    "bytes": 3082676
+  },
+  {
+    "file": "sea_day",
+    "aspect": "widescreen",
+    "source_sha256": "714dd898dbe4aa6eefef646f63dcbacc9f3f13aa2c8e5790487eff4168f185dc",
+    "path": "assets/battle/backgrounds/aspect/widescreen/sea_day.jpg",
+    "bytes": 1369227
+  },
+  {
+    "file": "sea_night",
+    "aspect": "portrait",
+    "source_sha256": "cc468a651eceaa2cc58ed4036aab47fd3c051879e981805053f3f67f1d5debf1",
+    "path": "assets/battle/backgrounds/aspect/portrait/sea_night.jpg",
+    "bytes": 2567780
+  },
+  {
+    "file": "sea_night",
+    "aspect": "widescreen",
+    "source_sha256": "cc468a651eceaa2cc58ed4036aab47fd3c051879e981805053f3f67f1d5debf1",
+    "path": "assets/battle/backgrounds/aspect/widescreen/sea_night.jpg",
+    "bytes": 1114016
+  },
+  {
+    "file": "sea_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "e3c778eed3ef2b18a2558af7a49faa7194a4fc39cebdc3aa3ad344afc23571a7",
+    "path": "assets/battle/backgrounds/aspect/portrait/sea_sunrise.jpg",
+    "bytes": 2961167
+  },
+  {
+    "file": "sea_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "e3c778eed3ef2b18a2558af7a49faa7194a4fc39cebdc3aa3ad344afc23571a7",
+    "path": "assets/battle/backgrounds/aspect/widescreen/sea_sunrise.jpg",
+    "bytes": 1313208
+  },
+  {
+    "file": "sea_sunset",
+    "aspect": "portrait",
+    "source_sha256": "21bb7d514b7e88203f5179719e6ef05982849d704ce7415441dc65b8107d40ae",
+    "path": "assets/battle/backgrounds/aspect/portrait/sea_sunset.jpg",
+    "bytes": 2885089
+  },
+  {
+    "file": "sea_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "21bb7d514b7e88203f5179719e6ef05982849d704ce7415441dc65b8107d40ae",
+    "path": "assets/battle/backgrounds/aspect/widescreen/sea_sunset.jpg",
+    "bytes": 1302504
+  },
+  {
+    "file": "silph_co",
+    "aspect": "portrait",
+    "source_sha256": "e3804910f22e70b065e4238edac8a178a1c999de64c7bc2a2f74006402cf7c9f",
+    "path": "assets/battle/backgrounds/aspect/portrait/silph_co.jpg",
+    "bytes": 2389316
+  },
+  {
+    "file": "silph_co",
+    "aspect": "widescreen",
+    "source_sha256": "e3804910f22e70b065e4238edac8a178a1c999de64c7bc2a2f74006402cf7c9f",
+    "path": "assets/battle/backgrounds/aspect/widescreen/silph_co.jpg",
+    "bytes": 1009191
+  },
+  {
+    "file": "ss_anne_day",
+    "aspect": "portrait",
+    "source_sha256": "1580d0fdcb168e2a87a48614b349158480c7af310481e5f258c0c05fdb8d8e89",
+    "path": "assets/battle/backgrounds/aspect/portrait/ss_anne_day.jpg",
+    "bytes": 2716826
+  },
+  {
+    "file": "ss_anne_day",
+    "aspect": "widescreen",
+    "source_sha256": "1580d0fdcb168e2a87a48614b349158480c7af310481e5f258c0c05fdb8d8e89",
+    "path": "assets/battle/backgrounds/aspect/widescreen/ss_anne_day.jpg",
+    "bytes": 1174126
+  },
+  {
+    "file": "ss_anne_night",
+    "aspect": "portrait",
+    "source_sha256": "77fad0c92718cb1d6feb04a28b3af61581f573c51d409fafb1315e83bcda6b1f",
+    "path": "assets/battle/backgrounds/aspect/portrait/ss_anne_night.jpg",
+    "bytes": 2261440
+  },
+  {
+    "file": "ss_anne_night",
+    "aspect": "widescreen",
+    "source_sha256": "77fad0c92718cb1d6feb04a28b3af61581f573c51d409fafb1315e83bcda6b1f",
+    "path": "assets/battle/backgrounds/aspect/widescreen/ss_anne_night.jpg",
+    "bytes": 990942
+  },
+  {
+    "file": "ss_anne_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "53189f4cbd7b6f5f713c55169307e5ad5795e79f0de0f42786a44d36cbb01afc",
+    "path": "assets/battle/backgrounds/aspect/portrait/ss_anne_sunrise.jpg",
+    "bytes": 2665389
+  },
+  {
+    "file": "ss_anne_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "53189f4cbd7b6f5f713c55169307e5ad5795e79f0de0f42786a44d36cbb01afc",
+    "path": "assets/battle/backgrounds/aspect/widescreen/ss_anne_sunrise.jpg",
+    "bytes": 1156037
+  },
+  {
+    "file": "ss_anne_sunset",
+    "aspect": "portrait",
+    "source_sha256": "92620428b288f508448b0a7955b94c5ec018c55e8910b91c0856905a72fe6f56",
+    "path": "assets/battle/backgrounds/aspect/portrait/ss_anne_sunset.jpg",
+    "bytes": 2635375
+  },
+  {
+    "file": "ss_anne_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "92620428b288f508448b0a7955b94c5ec018c55e8910b91c0856905a72fe6f56",
+    "path": "assets/battle/backgrounds/aspect/widescreen/ss_anne_sunset.jpg",
+    "bytes": 1159633
+  },
+  {
+    "file": "viridian_forest_day",
+    "aspect": "portrait",
+    "source_sha256": "38c9f1f57f56905f2d83240585e3cc463e822edd9511176a353fed685042c76d",
+    "path": "assets/battle/backgrounds/aspect/portrait/viridian_forest_day.jpg",
+    "bytes": 3399923
+  },
+  {
+    "file": "viridian_forest_day",
+    "aspect": "widescreen",
+    "source_sha256": "38c9f1f57f56905f2d83240585e3cc463e822edd9511176a353fed685042c76d",
+    "path": "assets/battle/backgrounds/aspect/widescreen/viridian_forest_day.jpg",
+    "bytes": 1603474
+  },
+  {
+    "file": "viridian_forest_night",
+    "aspect": "portrait",
+    "source_sha256": "2e7c1649d232d5478726ce76efca520b3083c9cc12dfc06c63b0c28613cbf3fe",
+    "path": "assets/battle/backgrounds/aspect/portrait/viridian_forest_night.jpg",
+    "bytes": 2814801
+  },
+  {
+    "file": "viridian_forest_night",
+    "aspect": "widescreen",
+    "source_sha256": "2e7c1649d232d5478726ce76efca520b3083c9cc12dfc06c63b0c28613cbf3fe",
+    "path": "assets/battle/backgrounds/aspect/widescreen/viridian_forest_night.jpg",
+    "bytes": 1311766
+  },
+  {
+    "file": "viridian_forest_sunrise",
+    "aspect": "portrait",
+    "source_sha256": "904db0e3c33d01fd224e6e03ddf4480ec75fb2b929deca5a957370a3498c9eff",
+    "path": "assets/battle/backgrounds/aspect/portrait/viridian_forest_sunrise.jpg",
+    "bytes": 3358761
+  },
+  {
+    "file": "viridian_forest_sunrise",
+    "aspect": "widescreen",
+    "source_sha256": "904db0e3c33d01fd224e6e03ddf4480ec75fb2b929deca5a957370a3498c9eff",
+    "path": "assets/battle/backgrounds/aspect/widescreen/viridian_forest_sunrise.jpg",
+    "bytes": 1614188
+  },
+  {
+    "file": "viridian_forest_sunset",
+    "aspect": "portrait",
+    "source_sha256": "f8151c9bf3bea0c502c0ba43b6f526065c7283e021d637ca0cbdf390f01e04a0",
+    "path": "assets/battle/backgrounds/aspect/portrait/viridian_forest_sunset.jpg",
+    "bytes": 3302586
+  },
+  {
+    "file": "viridian_forest_sunset",
+    "aspect": "widescreen",
+    "source_sha256": "f8151c9bf3bea0c502c0ba43b6f526065c7283e021d637ca0cbdf390f01e04a0",
+    "path": "assets/battle/backgrounds/aspect/widescreen/viridian_forest_sunset.jpg",
+    "bytes": 1599600
+  }
+]
