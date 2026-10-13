@@ -1,3 +1,16 @@
+# KIM1025 1.7.37
+
+Provide KIM HD artwork as a selectable sprite source for 1025Dex 1.2.44.
+
+- Export decoded HD animation sheets through getDexSpriteSheet without exposing filesystem paths. Preserve palettes, sides, supported forms, frame order and timing.
+- Respect 1025Dex's independent player/enemy sprite selections when both updated mods are active. KIM standalone behavior remains the same.
+
+Validation: 121 real PNG/GPU atlas and production-baker checks; conditional option and provider-ownership fixtures; existing focused entry, Gen 3 update and eleven-game startup regressions.
+
+Install 1025Dex 1.2.44 to select KIM through its settings. Restart the game after installing.
+
+Source: [kim1025](kim1025). Full source archive: [KIM1025-source.zip](KIM1025-source.zip).
+
 # KIM1025 1.7.36
 
 Built from GitHub's latest 1.7.35 release. Centre visible HD artwork in Gen 3 script-picture previews, including the starter confirmation box. Use cached union alpha bounds across the animation instead of centring the transparent atlas cell. Keep the animation anchor stable and retain existing battle sprite alignment.

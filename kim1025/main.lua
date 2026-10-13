@@ -123,6 +123,7 @@ return function(mod)
       return 0
     end
   end
+  assert((loadstring or load)(assert(mod:read('lib/dex_sprite_provider.lua'))))()(mod)
   -- Share grouped navigation across native and modern option presenters.
   do
     local chunk = assert((loadstring or load)(assert(mod:read("lib/settings_groups.lua")),
@@ -675,6 +676,7 @@ return function(mod)
   end
 
   local function battleRecord(species, side, mon)
+    if mod._kimDexSelected and not mod._kimDexSelected(side,true)then return nil end
     if IS_GEN2 then
       -- Gen 2 menu artwork and battle artwork are independent choices.
       -- MENU SPRITES may be VANILLA while BATTLE SPRITES stays ON.
@@ -913,6 +915,7 @@ return function(mod)
   end
 
   local function menuSpritesEnabled()
+    if mod._kimDexSelected and not mod._kimDexSelected('front',false)then return false end
     if IS_GEN2 then
       return tostring(mod.options:get("gen2MenuSpriteSource") or "kim") == "kim"
     end

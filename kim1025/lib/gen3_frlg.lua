@@ -106,6 +106,7 @@ return function(mod)
   end
 
   local function enabledForCurrentSurface(side)
+    if mod._kimDexSelected and not mod._kimDexSelected(side,battleActive())then return false end
     if side == "back" then return mod.options:get("battleSprites") ~= false end
     if battleActive() then return mod.options:get("battleSprites") ~= false end
     return mod.options:get("enabled") ~= false
@@ -499,6 +500,7 @@ return function(mod)
 
   frontWrapper = function(species, form, shiny, personality)
     local inBattle = battleActive()
+    if mod._kimDexSelected and not mod._kimDexSelected('front',inBattle)then return callFrontProvider(upstreamFront,species,form,shiny,personality)end
     if inBattle and mod.options:get("battleSprites") == false then
       return callFrontProvider(upstreamFront, species, form, shiny, personality)
     end
@@ -525,6 +527,7 @@ return function(mod)
 
   backWrapper = function(species, form, shiny)
     local inBattle = battleActive()
+    if mod._kimDexSelected and not mod._kimDexSelected('back',inBattle)then return callBackProvider(upstreamBack,species,form,shiny)end
     if inBattle and mod.options:get("battleSprites") == false then
       return callBackProvider(upstreamBack, species, form, shiny)
     end
