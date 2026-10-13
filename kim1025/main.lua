@@ -5128,42 +5128,19 @@ return function(mod)
   -- directly, so this path is only visible when the stock UI owns the screen.
   local function patchVanillaScreens()
     if IS_GEN2 then return end
-    local okDex, DexEntryMenu = false, nil
-    if not IS_GEN2 then okDex, DexEntryMenu = pcall(require, "src.ui.DexEntryMenu") end
-    if okDex and type(DexEntryMenu) == "table" then
-      if type(DexEntryMenu.new) == "function" and not DexEntryMenu._animatedMenuPokemonNew then
-        local originalNew = DexEntryMenu.new
-        DexEntryMenu._animatedMenuPokemonNew = originalNew
-        DexEntryMenu.new = function(game, speciesOrOpts, ...)
-          local self = originalNew(game, speciesOrOpts, ...)
-          local species = self and self.def and self.def.id
-          local animated = species and getSprite(species, { kind = "dex" })
-          animated = animated and fitStockPortrait(animated, 56, 56) or nil
-          if self and animated then
-            self.sprite, self.spriteTrueColor = animated, true
-          end
-          return self
-        end
-      end
-
-      -- Patch the shared static renderer rather than only DexEntryMenu:draw().
-      -- The stock Pokedex and printer paths both use this function, so the
-      -- animated portrait remains available anywhere the vanilla entry page is
-      -- rendered while Modern UI is disabled.
-      if type(DexEntryMenu.render) == "function" and not DexEntryMenu._animatedMenuPokemonRender then
-        local originalRender = DexEntryMenu.render
-        DexEntryMenu._animatedMenuPokemonRender = originalRender
-        DexEntryMenu.render = function(game, def, sprite, forceOwned, trueColor, page, ...)
-          local species = def and def.id
-          local animated = species and getSprite(species, { kind = "dex" })
-          animated = animated and fitStockPortrait(animated, 56, 56) or nil
-          if animated then
-            sprite, trueColor = animated, true
-          end
-          return originalRender(game, def, sprite, forceOwned, trueColor, page, ...)
-        end
-      end
-    end
+    local ok,Entry=pcall(require,'src.ui.DexEntryMenu')
+    if not ok or type(Entry.draw)~='function' then return end
+    local Font=require('src.render.Font')
+    local native={live=function()return true end,borders={drawPixels=function(x,y,w,h)
+      Font.drawBox(x/8,y/8,w/8,h/8)
+    end}}
+    mod.exports.pokedexPresentation=assert((loadstring or load)(assert(mod:read('lib/pokedex_presentation.lua'))))()(Font,function()
+      local theme=Font._menuCustomizerGB
+      return theme and theme.live()and theme or native
+    end,function(species)
+      local image=species and getSprite(species,{kind='dex'})
+      return image and fitStockPortrait(image,56,56)or nil
+    end)
   end
   patchVanillaScreens()
 

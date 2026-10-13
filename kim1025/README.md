@@ -1,3 +1,16 @@
+# KIM1025 1.7.38
+
+Own Gen 1 Pokedex entry presentation in KIM1025, with Menu Customizer supplying optional shared styling.
+
+- Migrate wrapped/paginated descriptions, inset text, Height/Weight labels, U.S. customary measurements and framed entry/stats/information pages into KIM.
+- Refresh the selected species/form portrait consistently for the main entry and stats pages.
+- Prepare the stats orientation in a separate scratch canvas, without intercepting graphics.draw or mutating the source image; restore the screen's original sprite after drawing.
+- Preserve 1025Dex description/stats/form navigation and use native font/frames when Menu Customizer is absent.
+
+Install alongside Menu Customizer 3.2.62 to remove its old competing entry hooks. Restart the game after installing both.
+
+Validation: 50 focused pagination/navigation/unit checks under both LuaJIT and Lua 5.3, plus 28 GPU entry-rendering checks including asymmetric sprite pixels and restoration of the source image. No live gameplay session was restarted.
+
 # KIM1025 1.7.37
 
 Provide KIM HD artwork as a selectable sprite source for 1025Dex 1.2.44.
