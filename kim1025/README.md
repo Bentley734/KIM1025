@@ -1,3 +1,9 @@
+# KIM1025 1.7.44 — Restore HD battler motion
+
+The HD arena's direct sprite path now delegates to the native drawBattlerPic effect handler. This restores per-picture offsets, slide/shake/squish effects and live screen-shake displacement at the HD scene scale, retaining the selected sprite provider and arena placement. Temporary sprite/clip state is restored even on errors. Native move scripts remain authoritative; no animation art is imported.
+
+Built from latest GitHub KIM1025 1.7.43, checked with latest Menu Customizer 3.3.1 and 1025Dex 1.5.0. Validate scaled XY sprite motion and screen shake, fallback shake and error restoration under LuaJIT/Lua 5.3, whole-source compilation and combined eleven-game startup. No live battle playthrough was performed. Restart the game after installation. Johnto is unchanged.
+
 # KIM1025 1.7.43 — Keep HD battles during native moves; remove white palette boxes
 
 Remove 1.7.42's whole-battle animation fallback: HD scenery, Pokémon placement and the custom HUD stay active during attacks and native feedback. Restore native OAM drawing into the transparent overlay without reinstating KRBA, move assets/SFX or the catch animation-player wrapper.

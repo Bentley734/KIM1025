@@ -3136,6 +3136,7 @@ return function(mod)
       or battler.fainted or fxHidden)
   end
 
+  local drawBattleMotion=assert(load(assert(mod:read('lib/gen1_battle_motion.lua'))))()
   local function drawDirectSide(battle, side, geo)
     local battler = battle and battle[side]
     local mon = battler and battler.mon
@@ -3160,8 +3161,10 @@ return function(mod)
     end
 
     love.graphics.setColor(1,1,1,1)
-    love.graphics.draw(frame,x,y,0,scale,scale)
+    local unit=side=='player'and(geo.playerPixelScale or geo.pixelScale)or geo.pixelScale
+    local okMotion,motionErr=pcall(drawBattleMotion,battle,battler,frame,x,y,scale,unit)
     love.graphics.pop()
+    if not okMotion then error(motionErr,0)end
     return true
   end
 
