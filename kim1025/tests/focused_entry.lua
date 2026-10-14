@@ -1,7 +1,7 @@
 local function read(p)local f=io.open(p);if not f then return nil end;local s=f:read('*a');f:close();return s end
 local checks=0
 local function check(v,m)checks=checks+1;assert(v,m)end
-for generation=1,3 do for _,host in ipairs({'OS X','iOS'})do
+for generation=1,3 do for _,host in ipairs({'Windows','OS X','Android','iOS'})do
  local hooks,events,screens,logs={},{},{},{}
  local values={battleSprites=true,menuIcons=true,integratedModernUi=true,gen2IntegratedModernUi=true,
   gen3IntegratedModernUi=true,titleScreen=true,battleShinyOdds='1',battleTrainerSprite='ash',battlePlayerSize='125',battleEnemySize='150'}
@@ -10,7 +10,11 @@ for generation=1,3 do for _,host in ipairs({'OS X','iOS'})do
  local B={newWild=unchanged,drawPicsLayer=unchanged,picImage=function(_,p)return p end,draw=unchanged,drawHUDs=unchanged,resolveBattleScale=function()return 1 end}
  local Pokemon={frontPic=unchanged,backPic=unchanged,__completeDexEnsurePics=unchanged}
  local classes={};for _,key in ipairs({'SummaryMenu','EvolutionState','TitleScreen','StarterChoose','PartyMenu'})do classes[key]={draw=unchanged,new=unchanged,drawPic=unchanged}end
- local A={start=unchanged,update=unchanged,isDone=unchanged,pollEffects=unchanged,draw=unchanged}
+ local calls={}
+ local nativeStart=function(self,id,side,opts) calls.start={self,id,side,opts};return 'native',id,side,opts end
+ local nativeDraw=function(self,colorized) calls.draw={self,colorized};return 'native-draw',colorized end
+ B.drawAnimLayer=nativeDraw
+ local A={start=nativeStart,update=unchanged,isDone=unchanged,pollEffects=unchanged,draw=unchanged}
  local modules={['src.render.Font']={},['src.battle.TypeChart']={},['src.battle.BattleState']=B,['src.battle.AnimPlayer']=A,['src.core.Sound']={},
   ['src.core.GameVersion']={generation=function()return generation end,get=function()return generation==3 and 'firered' or 'red'end},
   ['src.core.Game']={save={options={}},stack={states={}}},['src.core.game3.pokemon']=Pokemon,
@@ -28,12 +32,12 @@ for generation=1,3 do for _,host in ipairs({'OS X','iOS'})do
   options={define=function(_,s)schema=s end,get=function(_,k)if values[k]~=nil then return values[k]end;for _,r in ipairs(schema)do if r.key==k then return r.default end end end},
   events={on=function(_,n,f)events[n]=events[n]or{};table.insert(events[n],f)end},
   hooks={wrap=function(_,n,f)hooks[n]=hooks[n]or{};table.insert(hooks[n],f)end},
-  content={screens={register=function(_,id,s)screens[id]=s end},sfx={register=function()end},battle_sprite_scales={register=function()end}},
+  content={screens={register=function(_,id,s)screens[id]=s end},sfx={register=function()error('move SFX must not be registered')end},battle_sprite_scales={register=function()end}},
   log={info=function()end,warn=function()end,error=function(_,fmt,...)logs[#logs+1]=string.format(fmt,...)end},read=function(_,p)return read(p)end}
  local ok,err=pcall(assert(env.load(assert(read('main.lua')),'complete focused entry'))(),mod)
  check(ok,'entry boots '..generation..' '..host..': '..tostring(err))
  for _,fn in ipairs(events['game.ready']or{})do fn({game=modules['src.core.Game']})end
- check(#schema==(generation==1 and 7 or generation==2 and 1 or 2),'only requested options')
+ check(#schema==(generation==1 and 6 or generation==2 and 1 or 2),'only requested options')
  check(mod.options:get('battleSprites')==false and mod.options:get('menuIcons')==false,'old sprite/icon flags disabled')
  check(mod.options:get('battleShinyOdds')=='native','old shiny odds disabled')
  check(mod.options:get('battlePlayerSize')=='125' and mod.options:get('battleEnemySize')=='150','saved alignment retained')
@@ -44,7 +48,21 @@ for generation=1,3 do for _,host in ipairs({'OS X','iOS'})do
  check(mod.exports._kantoInMotionStagedBattleSprite==nil and mod.exports._kantoInMotionPotatoPinnedBackNative==nil,'3D sprite providers removed')
  if generation~=3 then check(mod.exports.registerBattleCompatibility({owner='potato_voxel',active=function()return true end})==false,'legacy 3D registration refused') end
  check(mod._kantoInMotionBattleArtCompat==nil and mod._kantoInMotionPotatoVoxelCompat==nil and mod._kantoInMotionBattleArtGen2Compat==nil,'3D installers absent')
- if generation==1 then check(mod.exports.integratedKrba==true and mod.exports.integratedKrbaCoverage==165,'165 move animations retained')end
+ if generation==1 then check(mod.exports.integratedKrba==nil and mod.exports._kantoInMotionKRBAActiveSession==nil,'native move animations retained')end
+ check(A.update==unchanged and A.draw==unchanged and A.pollEffects==unchanged and A.isDone==unchanged,'native animation lifecycle preserved')
+ for _,id in ipairs(assert(loadfile('tests/fixtures/native_moves.lua'))())do
+  for _,side in ipairs({true,false})do
+   local ap=setmetatable({},{__index=A});local opts={test=id};local tag,move,who,o=ap:start(id,side,opts)
+   check(tag=='native' and move==id and who==side and o==opts,'native start result: '..id)
+   check(calls.start[1]==ap and calls.start[2]==id and calls.start[3]==side and calls.start[4]==opts,'native start args: '..id)
+   local b=setmetatable({kind='wild',animPlayer=ap},{__index=B})
+   if mod._kantoInMotionPokeballTargetFix then check(mod._kantoInMotionPokeballTargetFix:prepare(b,0,0,1,1)==false and b._kantoInMotionBallAnimShift==nil,'catch correction ignores moves: '..id)end
+   for _,colorized in ipairs({true,false})do
+    local result,color=b:drawAnimLayer(colorized)
+    check(result=='native-draw' and color==colorized and calls.draw[1]==b and calls.draw[2]==colorized,'native effect draw: '..id)
+   end
+  end
+ end
  for _,line in ipairs(logs)do check((line:find('asset manager',1,true)~=nil or line:find('asset-manager',1,true)~=nil),'unexpected installer failure: '..line)end
 end end
 print('PASS: '..checks..' complete entry / upgrade / native ownership checks')

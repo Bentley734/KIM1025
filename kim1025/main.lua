@@ -1,5 +1,5 @@
 -- Kanto in Motion
--- Animated Pokedex sprites, HD battle backgrounds, trainer choices and move animations.
+-- Animated Pokedex sprites, HD battle backgrounds, trainer choices and native move animations.
 -- GIF source packs are converted locally into optimized sprite sheets with
 -- tools/import_hd_pokemon.py.
 return function(mod)
@@ -436,7 +436,6 @@ return function(mod)
       { key = "desktopTrainerSizeV2", label = "TRAINER SIZE", type = "choice", default = "100", choices = { { "50%", "50" }, { "60%", "60" }, { "70%", "70" }, { "80%", "80" }, { "90%", "90" }, { "100%", "100" }, { "110%", "110" }, { "120%", "120" }, { "130%", "130" }, { "140%", "140" }, { "150%", "150" }, { "160%", "160" }, { "170%", "170" }, { "180%", "180" }, { "190%", "190" }, { "200%", "200" } }, description = "Desktop trainer size percentage. Fits window width and height, with a cap that keeps the visible trainer on-screen." },
       { key = "desktopPlayerSizeV2", label = "PLAYER POKEMON SIZE", type = "choice", default = "100", choices = { { "AUTO", "auto" }, { "50%", "50" }, { "60%", "60" }, { "70%", "70" }, { "80%", "80" }, { "90%", "90" }, { "100%", "100" }, { "110%", "110" }, { "120%", "120" }, { "130%", "130" }, { "140%", "140" }, { "150%", "150" }, { "160%", "160" }, { "170%", "170" }, { "180%", "180" }, { "190%", "190" }, { "200%", "200" } }, description = "AUTO fills the available space above the mound and below enemy name/HP, using visible sprite bounds. Percentages retain manual size. Desktop HD battles only." },
       { key = "desktopEnemySize", label = "ENEMY POKEMON SIZE", type = "choice", default = "100", choices = { { "50%", "50" }, { "60%", "60" }, { "70%", "70" }, { "80%", "80" }, { "90%", "90" }, { "100%", "100" }, { "110%", "110" }, { "120%", "120" }, { "130%", "130" }, { "140%", "140" }, { "150%", "150" }, { "160%", "160" }, { "170%", "170" }, { "180%", "180" }, { "190%", "190" }, { "200%", "200" } }, description = "Desktop battle size percentage. Changes size while retaining the current anchor." },
-      { key = "battleAnimations", label = "MOVE ANIMATIONS", type = "toggle", default = true },
     }
   end
   local combinedKantoOptionSchema = {}
@@ -2407,48 +2406,6 @@ return function(mod)
     return ok and touchBattleOrientation(game) ~= nil
   end
 
-  -- Mobile landscape keeps Gen1's native 48-row command/dialog strip at the
-  -- bottom of the battle. OAM animation sprites (notably the player send-out
-  -- POOF/Poke Ball opening) can extend a few pixels below logical row 96.
-  -- KIM reconstructs that animation layer over the fullscreen arena, so those
-  -- pixels would otherwise land on top of the preserved dialog frame. Clip
-  -- only the native animation layer to the battlefield while the landscape
-  -- touch presentation is active. The animation itself, trainer, HUD, dialog,
-  -- Party and Bag paths are otherwise unchanged.
-  do
-    local okBattle, BattleState = pcall(require, "src.battle.BattleState")
-    if okBattle and type(BattleState) == "table"
-        and type(BattleState.drawAnimLayer) == "function"
-        and not BattleState._kantoInMotionLandscapeAnimClip then
-      local nativeDrawAnimLayer = BattleState.drawAnimLayer
-      BattleState._kantoInMotionLandscapeAnimClip = nativeDrawAnimLayer
-      BattleState.drawAnimLayer = function(self, ...)
-        local g = love and love.graphics
-        local clip = self and self._kantoInMotionBattleLite
-          and touchBattleOrientation(self.game) == "landscape"
-          and g and type(g.getScissor) == "function"
-          and type(g.setScissor) == "function"
-        if not clip then return nativeDrawAnimLayer(self, ...) end
-
-        local oldX, oldY, oldW, oldH = g.getScissor()
-        if type(g.intersectScissor) == "function" then
-          g.intersectScissor(0, 0, 160, 96)
-        else
-          g.setScissor(0, 0, 160, 96)
-        end
-        local result = { pcall(nativeDrawAnimLayer, self, ...) }
-        if oldX ~= nil then
-          g.setScissor(oldX, oldY, oldW, oldH)
-        else
-          g.setScissor()
-        end
-        local ok = table.remove(result, 1)
-        if not ok then error(result[1], 0) end
-        return unpackCompat(result)
-      end
-    end
-  end
-
   -- New 1920x950 HD battle arenas. The router reads the live Gen1 map/terrain/time
   -- state and chooses a complete authored sunrise/day/sunset/night image. Caves
   -- and other fixed locations stay static; there is no runtime shadow blending.
@@ -3140,24 +3097,7 @@ return function(mod)
     return result
   end
 
-  -- Live integrated KRBA session. The original 1.3.7 full-window battle
-  -- compositor used this exact handoff so BG/FG planes, particles and battler
-  -- transforms share one timing source.
-  local function activeKrbaSession(battle)
-    local fn=mod.exports and mod.exports._kantoInMotionKRBAActiveSession
-    if type(fn)~="function" then return nil end
-    local ok,value=pcall(fn)
-    if not ok then return nil end
-
-    -- The KRBA session snapshots the real attacker side at AnimPlayer:start.
-    -- Keep that session-owned value authoritative. BattleState's transient
-    -- animAttackerIsPlayer flag can lag the direct session during final-window
-    -- reconstruction, which can invert enemy USER/TARGET ownership (Growl,
-    -- Quick Attack, Fury Attack, etc.). A completed session is never drawable.
-    if type(value)=="table" and value.done then return nil end
-    return value
-  end
-
+  -- Native battle animation timing and effects remain engine-owned.
   local function directSideVisible(battle, side)
     local battler = battle and battle[side]
     local mon = battler and battler.mon
@@ -3187,21 +3127,10 @@ return function(mod)
     local ax, ay = metrics.ax, metrics.ay
     local x = math.floor(metrics.x + 0.5)
     local y = math.floor(metrics.y + 0.5)
-    local transform=nil
-    if geo.hd or geo.kimWide or geo.krs then
-      local sess=activeKrbaSession(battle)
-      if sess and type(sess.battlerTransformWide)=="function" then
-        local ok,value=pcall(sess.battlerTransformWide,sess,side)
-        if ok and type(value)=="table" then transform=value end
-      end
-    end
-    if transform and transform.visible==false then return true end
-
     love.graphics.setShader()
     love.graphics.push("all")
 
-    -- Shadows remain grounded at the authored contact point. The sprite itself
-    -- then receives the move's USER/TARGET transform just like KIM 1.3.7.
+    -- Shadows remain grounded at the authored contact point.
     love.graphics.setColor(1,1,1,1)
     if mod._kantoInMotionBattlerShadows
         and type(mod._kantoInMotionBattlerShadows.drawDirect) == "function" then
@@ -3209,20 +3138,7 @@ return function(mod)
         mod._kantoInMotionBattlerShadows, metrics, side, 1)
     end
 
-    local alpha=transform and (tonumber(transform.opacity) or 1) or 1
-    love.graphics.setColor(1,1,1,alpha)
-    if transform then
-      local k=geo.hdScale or geo.krsScale or geo.krbaScale or 1
-      local dx=(tonumber(transform.dx) or 0)*k
-      local dy=(tonumber(transform.dy) or 0)*k
-      local sx=tonumber(transform.scaleX) or 1
-      local sy=tonumber(transform.scaleY) or 1
-      if transform.mirror then sx=-sx end
-      love.graphics.translate(ax+dx,ay+dy)
-      love.graphics.rotate(tonumber(transform.rotation) or 0)
-      love.graphics.scale(sx,sy)
-      love.graphics.translate(-ax,-ay)
-    end
+    love.graphics.setColor(1,1,1,1)
     love.graphics.draw(frame,x,y,0,scale,scale)
     love.graphics.pop()
     return true
@@ -3439,33 +3355,6 @@ return function(mod)
         wideTransform.sx or wideTransform.scale,wideTransform.sy or wideTransform.scale)
     end
 
-    -- Original KIM 1.3.7 KRBA wide compositor, adapted to the current
-    -- 1920x950 HD-background router. BG/FG image/color planes now use the
-    -- complete final battle canvas instead of the native 160x144 surface.
-    local krba=activeKrbaSession(battle)
-    local krbaWideAnchors=nil
-    if krba and wideTransform then
-      local stageScale=tonumber(wideTransform.scale) or 1
-      if not (stageScale>0) then stageScale=1 end
-      local geo=directStageGeometry(vw,vh,game,battle)
-      local tx,ty=wideTransform.x or 0,wideTransform.y or 0
-      local pm=directSideMetrics(battle,"player",geo)
-      local em=directSideMetrics(battle,"enemy",geo)
-      local fallbackHalf=95*stageScale
-      local pcx=pm and pm.centerX or (geo.playerX or 0)
-      local pcy=pm and pm.centerY or ((geo.playerY or 0)-fallbackHalf)
-      local ecx=em and em.centerX or (geo.enemyX or 0)
-      local ecy=em and em.centerY or ((geo.enemyY or 0)-fallbackHalf)
-      krbaWideAnchors={
-        player={x=(pcx-tx)/stageScale,y=(pcy-ty)/stageScale},
-        enemy={x=(ecx-tx)/stageScale,y=(ecy-ty)/stageScale},
-      }
-    end
-    if krba and wideTransform and type(krba.drawWideBack)=="function" then
-      mod._kantoInMotionGuardedMobileCall("KRBA wide back draw",
-        krba.drawWideBack,krba,wideTransform,krbaWideAnchors)
-    end
-
     -- Paint the intro trainer and imported HD animated Pokemon directly at
     -- final-window resolution using the same authored ground-contact anchors.
     -- The native 160x144 overlay is intentionally not responsible for trainer
@@ -3620,10 +3509,6 @@ return function(mod)
         mod._kantoInMotionShinyEncounterFx.draw,
         mod._kantoInMotionShinyEncounterFx, battle, game, vw, vh)
     end
-    if krba and wideTransform and type(krba.drawWideFront)=="function" then
-      mod._kantoInMotionGuardedMobileCall("KRBA wide front draw",
-        krba.drawWideFront,krba,wideTransform,krbaWideAnchors)
-    end
     g.pop()
     if prev then g.setCanvas(prev) else g.setCanvas() end
     mod._kantoInMotionFlatWorldOrientation(game.renderer, flatBattleWorldCanvas)
@@ -3704,14 +3589,6 @@ return function(mod)
       qolXpCompat.enemyBandY = geo.enemyBandY
     end
     return true
-  end
-
-  -- Shared with the integrated KRBA bridge. When true, KRBA suppresses its
-  -- duplicate native 160x96 layer because setFlatBattleWorld has already
-  -- rendered the same session at final-window resolution.
-  mod.exports._kantoInMotionKrsWideActive=function(battle)
-    return not IS_GEN2 and battle~=nil and battleLiteDirectStageActive()
-      and activeKrbaSession()~=nil
   end
 
   -- Kanto in Motion owns the battlefield, animated battlers and one native-style
@@ -4977,28 +4854,6 @@ return function(mod)
         end
       end
 
-      -- Battle Art projects ordinary KRBA particles into the 3D scene, but
-      -- full-field BG/FG planes must remain screen-fixed. Restore KIM 1.3.7's
-      -- final-window plane fallback so Thundershock/Thunder/Thunderbolt/Flash
-      -- and every image/color timing plane fills the real window rather than
-      -- disappearing or being trapped in the native 160x96 battle surface.
-      local krbaBattleArtSession=nil
-      local mobileBattleArt = battle and battleArt3DBattleEnabled()
-        and type(mod._kantoInMotionNativeMobileHost)=="function"
-        and mod._kantoInMotionNativeMobileHost() or false
-      if battle and battleArt3DBattleEnabled()
-          and type(battle.dramaticShapeShot)=="table"
-          and mod.exports
-          and type(mod.exports._kantoInMotionKRBAActiveSession)=="function" then
-        local okSess,sess=pcall(mod.exports._kantoInMotionKRBAActiveSession)
-        if okSess and type(sess)=="table" and not sess.done then
-          krbaBattleArtSession=sess
-          local backFn = mobileBattleArt and sess.drawBattleArtScreenBackMobile
-            or sess.drawBattleArtScreenBack
-          if type(backFn)=="function" then pcall(backFn,sess) end
-        end
-      end
-
       -- A cooperative external stage (for example PotatoVoxel) can expose the
       -- same projected-foot shot contract. Keep the shiny sparkle/SFX cue
       -- independent from HD-background ownership without importing any Battle
@@ -5013,15 +4868,6 @@ return function(mod)
           or mod._kantoInMotionShinyEncounterFx.drawExternalStage
         if type(shinyFn)=="function" then
           pcall(shinyFn,mod._kantoInMotionShinyEncounterFx,battle,game)
-        end
-      end
-
-      if krbaBattleArtSession then
-        local frontFn = mobileBattleArt
-          and krbaBattleArtSession.drawBattleArtScreenFrontMobile
-          or krbaBattleArtSession.drawBattleArtScreenFront
-        if type(frontFn)=="function" then
-          pcall(frontFn,krbaBattleArtSession)
         end
       end
 
@@ -5414,24 +5260,9 @@ return function(mod)
     return out
   end)
 
-  -- Integrated Gen 1 battle helpers. The move-animation code/data is the same
-  -- KIM 1.3.7 implementation, now paired with the remediated animation/SFX
-  -- asset set that passed the user's follow-up scanner.
+  -- Native catch positioning does not replace move animations or effects.
   if not IS_GEN2 then
-    local okHelper,helper=pcall(function()
-      local src=assert(mod:read("lib/integrated_krba.lua"))
-      local loader=loadstring or load
-      return assert(loader(src,"@"..mod.path.."/lib/integrated_krba.lua"))()
-    end)
-    if okHelper and type(helper)=="function" then
-      local okRun,err=pcall(helper,mod)
-      if not okRun then
-        mod.log:error("integrated KRBA failed: %s",tostring(err))
-      end
-    else
-      mod.log:error("cannot load integrated KRBA: %s",tostring(helper))
-    end
-
+    local okHelper,helper
     -- Keep the accepted native catch-animation target correction. This module
     -- adjusts only Gen1Recomp's own Pokeball animation; it contains no bundled
     -- move art or move SFX.

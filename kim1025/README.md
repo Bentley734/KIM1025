@@ -1,3 +1,13 @@
+# KIM1025 1.7.40 — Native move animations and effects
+
+Remove the bundled KRBA/Essentials animation installer, desktop/mobile replacement players, all 165 animation definitions, move PNGs and move SFX. Remove the MOVE ANIMATIONS setting, custom battler transforms, wide/3D effect planes and animation-layer clipping. Old saved preferences cannot reinstall the provider.
+
+Preserve native Poké Ball catch targeting, Pokémon sprite providers, trainer choices, HD backgrounds and Pokédex presentation. Move execution, timing and effect drawing stay with the engine and any independently installed animation provider.
+
+Built from GitHub's latest KIM1025 1.7.39 source and release. Validated under LuaJIT and Lua 5.3 with native move forwarding on both sides, Windows/macOS/Android/iOS startup across all three generations, source compilation and alignment/Pokédex/Gen 3 regressions. No live battle reproduction was performed.
+
+Replace the installed KIM1025 folder and restart the game to unload the old patched player. Use native battle animations in the game's own settings. Johnto and Johnto in Motion were excluded at the user's request.
+
 # kim1025 1.7.39
 
 Fix species sprite lookup for accented and non-ASCII display names. Normalize complete UTF-8 characters before ASCII lookup; preserve Nidoran gender suffixes, handle Latin accents, combining marks and curly punctuation, and recognize older corrupted encodings.
@@ -52,7 +62,7 @@ Install Menu Customizer 3.2.28 alongside this release and restart.
 
 # KIM1025 1.7.34
 
-KIM1025 now keeps four features:
+KIM1025 now keeps three features:
 
 - Animated Pokédex sprites.
 
@@ -60,9 +70,9 @@ KIM1025 now keeps four features:
 
 - Player trainer sprite choices and animated trainer intros in Red/Blue/Yellow.
 
-- The 165 Gen 1 Kanto Rework / Essentials move animations.
+Move animations and effects use the engine’s native player.
 
-Red/Blue/Yellow has four settings and KIM ASSETS on one page. Gold/Silver/Crystal retains its animated Pokédex support. FireRed/LeafGreen/Ruby/Sapphire/Emerald retains animated Pokédex previews and supported HD backgrounds. Trainer selection and the replacement move-animation pack remain Gen 1 features, as in previous releases.
+Red/Blue/Yellow has three feature settings plus size calibration and KIM ASSETS on one page. Gold/Silver/Crystal retains its animated Pokédex support. FireRed/LeafGreen/Ruby/Sapphire/Emerald retains animated Pokédex previews and supported HD backgrounds. Trainer selection remains a Gen 1 feature. The replacement move-animation pack has been removed.
 
 Modern UI, title-screen changes, party/summary/evolution/starter portraits, menu icons, KIM battle Pokémon replacements, custom shadows, shiny encounter effects/odds, and Pokéball recoloring have been removed. Native gameplay and other mods own those features. Old saved flags cannot turn the removed features back on. 1025Dex owns battle Pokémon; KIM only replays its current pictures where HD background alignment requires it. Its native picture layer still runs every frame.
 

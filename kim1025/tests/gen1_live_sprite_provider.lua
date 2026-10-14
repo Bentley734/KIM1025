@@ -58,7 +58,7 @@ local env=setmetatable({battleLiteFullScreenActive=function()return false end,ba
  renderPresentationFrame=function()error('KIM artwork must not replace a claimed Dex sprite')end,
  battlerGrow=function()return 1 end,shinyGroundOffset=function()return 0 end},{__index=_G})
 local a=assert(main:find('  mod._kantoInMotionFlatNativeFrame = function',1,true))
-local b=assert(main:find('  -- Live integrated KRBA session.',a,true))
+local b=assert(main:find('  -- Native battle animation timing and effects remain engine-owned.',a,true))
 local metrics=assert(load(main:sub(a,b-1)..'\nreturn directSideMetrics','production sprite scene','t',env))()
 local geo={hd=true,pixelScale=2,playerPixelScale=2,enemyX=120,enemyY=65,playerX=26,playerY=110}
 for _,side in ipairs({'player','enemy'})do

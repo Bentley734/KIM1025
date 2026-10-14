@@ -10,7 +10,7 @@ local env=setmetatable({mod={options={get=function(_,key)return key=='battlePlay
  touchBattleOrientation=function()return orientation end,battleRecord=function()end,
  battlerGrow=function()return 1 end,shinyGroundOffset=function()return 0 end},{__index=_G})
 local a=assert(source:find('  local function directSideMetrics(',1,true))
-local b=assert(source:find('  -- Live integrated KRBA session.',a,true))
+local b=assert(source:find('  -- Native battle animation timing and effects remain engine-owned.',a,true))
 local metrics=assert(load(source:sub(a,b-1)..'\nreturn directSideMetrics','production desktop provider scale','t',env))()
 local battle={game={},player={mon={species=34}},enemy={mon={species=402}}}
 for _,rung in ipairs({2,4,6,10})do

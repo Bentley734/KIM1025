@@ -50,7 +50,7 @@ https://github.com/keberos/pokeball-colorfix
 
 ## Kanto Rework
 
-Kanto in Motion integrates adapted Kanto Rework / Pokémon Essentials-style move-animation and routing work.
+Previous releases integrated Kanto Rework / Pokémon Essentials-style move animations. The player, animation definitions, art and sound effects were removed in 1.7.40.
 
 Project credit: **Faendra**  
 https://github.com/Faendra/kanto-rework-suite

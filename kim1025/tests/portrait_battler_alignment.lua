@@ -23,7 +23,7 @@ local function compile(a,b,extra)
 end
 local transform,ground=compile('  local function hdArenaTransform(', '  -- Full-window 2D host', '\nreturn hdArenaTransform, hdArenaGroundGeometry')
 env.hdArenaTransform=transform
-local metrics=compile('  mod._kantoInMotionFlatNativeFrame = function','  -- Live integrated KRBA session.', '\nreturn directSideMetrics')
+local metrics=compile('  mod._kantoInMotionFlatNativeFrame = function','  -- Native battle animation timing and effects remain engine-owned.', '\nreturn directSideMetrics')
 local battle={game={},player={mon={species=158},sprite=pic},enemy={mon={species=16},sprite=pic},picImage=function(_,img)return img end}
 for _,width in ipairs({390,707,1170,2121})do
  for _,pct in ipairs({50,100,200})do

@@ -50,7 +50,7 @@ local f=assert(io.open(kim..'/main.lua'));local s=f:read('*a');f:close()
 assert(s:find('mod._kantoInMotionFlatWorldOrientation(game.renderer, flatBattleWorldCanvas)\n    game.renderer:setWorldOverride(flatBattleWorldCanvas)',1,true))
 -- Execute the actual flat producer with assets and gameplay isolated.
 local start=assert(s:find('  setFlatBattleWorld = function(game, battle)',1,true))
-local stop=assert(s:find('  -- Shared with the integrated KRBA bridge.',start,true))
+local stop=assert(s:find('  -- Kanto in Motion owns the battlefield,',start,true))
 local image=love.graphics.newCanvas(1920,950)
 local function readLua(path)
  local f=assert(io.open(path));local text=f:read('*a');f:close()

@@ -1,7 +1,7 @@
 {
   "id": "kim1025",
   "name": "KIM1025",
-  "version": "1.7.39",
+  "version": "1.7.40",
   "api": 2,
   "entry": "main.lua",
   "profile": "overhaul",
@@ -35,6 +35,6 @@
     "network"
   ],
   "affects_link": false,
-  "description": "Animated Pokedex sprites, HD battle backgrounds, Gen 1 trainer choices and move animations, with persistent downloads and iOS alignment fixes.",
+  "description": "Animated Pokedex sprites, HD battle backgrounds and Gen 1 trainer choices, with native move animations and effects.",
   "github": "Bentley734/KIM1025"
 }

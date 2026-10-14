@@ -1,3 +1,13 @@
+# KIM1025 1.7.40 — Native move animations and effects
+
+Remove the bundled KRBA/Essentials animation installer, desktop/mobile replacement players, all 165 animation definitions, move PNGs and move SFX. Remove the MOVE ANIMATIONS setting, custom battler transforms, wide/3D effect planes and animation-layer clipping. Old saved preferences cannot reinstall the provider.
+
+Preserve native Poké Ball catch targeting, Pokémon sprite providers, trainer choices, HD backgrounds and Pokédex presentation. Move execution, timing and effect drawing stay with the engine and any independently installed animation provider.
+
+Built from GitHub's latest KIM1025 1.7.39 source and release. Validated under LuaJIT and Lua 5.3 with native move forwarding on both sides, Windows/macOS/Android/iOS startup across all three generations, source compilation and alignment/Pokédex/Gen 3 regressions. No live battle reproduction was performed.
+
+Replace the installed KIM1025 folder and restart the game to unload the old patched player. Use native battle animations in the game's own settings. Johnto and Johnto in Motion were excluded at the user's request.
+
 # kim1025 1.7.39
 
 Fix species sprite lookup for accented and non-ASCII display names. Normalize complete UTF-8 characters before ASCII lookup; preserve Nidoran gender suffixes, handle Latin accents, combining marks and curly punctuation, and recognize older corrupted encodings.

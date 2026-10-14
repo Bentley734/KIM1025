@@ -30,7 +30,7 @@ env.mobilePortraitStageRectPx=function()end
 env.battleHudGeometry=compile('  local function battleHudGeometry(',
  '  -- Native-resolution fullscreen battlers.','battleHudGeometry')
 local metrics=compile('  local function directSideMetrics(',
- '  -- Live integrated KRBA session.','directSideMetrics')
+ '  -- Native battle animation timing and effects remain engine-owned.','directSideMetrics')
 local battle={game={},player={mon={species=34}},enemy={mon={species=402}}}
 for _,size in ipairs({{1047,729},{1280,720},{1920,1080},{2560,1440},{5120,1440},{3840,2160}})do
  local vw,vh=table.unpack(size)
