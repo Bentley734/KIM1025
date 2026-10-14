@@ -31,7 +31,7 @@ if arg[1] then
  local ia=assert(dex:find('  local function frameIndex(count, frames)',1,true))
  local ib=assert(dex:find('  -- ---------------------------------------------------------------------------',ia,true))
  index=assert(load(dex:sub(ia,ib-1)..'\nreturn frameIndex','installed frame clock','t',clockEnv))()
- local env=setmetatable({battleLiteFullScreenActive=function()return false end,battleBackgroundMode=function()return 'fullscreen'end,mod={hooks=hooks,log={info=function()end}},
+ local env=setmetatable({nativeMoveRendering=assert(loadfile("lib/native_move_rendering.lua"))(),battleLiteFullScreenActive=function()return false end,battleBackgroundMode=function()return 'fullscreen'end,mod={hooks=hooks,log={info=function()end}},
   wantEnabled=function()return true end,diag={stats={scene=0}},managedSpecies={},
   DATA=data,
   monStem=function(mon)return mon.species,false end,teraTypeOf=function()end,dynamaxOf=function()end,
@@ -52,7 +52,7 @@ local battle={game={},player={mon={species='BULBASAUR'},sprite=vanilla},
 local mod={path='.',exports={},options={get=function()return 100 end}}
 mod._kimBattlePicProvider=assert(loadfile('lib/gen1_battle_pic_provider.lua'))()(mod,function()return false end)
 local main=read(arg[3] or 'main.lua')
-local env=setmetatable({battleLiteFullScreenActive=function()return false end,battleBackgroundMode=function()return 'fullscreen'end,mod=mod,battleLiteDirectStageActive=function()return true end,
+local env=setmetatable({nativeMoveRendering=assert(loadfile("lib/native_move_rendering.lua"))(),battleLiteFullScreenActive=function()return false end,battleBackgroundMode=function()return 'fullscreen'end,mod=mod,battleLiteDirectStageActive=function()return true end,
  hdBattleBackgroundsEnabled=function()return true end,touchBattleOrientation=function()return 'portrait' end,
  hdArenaImage=function()return vanilla end,battleRecord=function()return {image='unavailable-kim.png'},'hd','TEST',false end,
  renderPresentationFrame=function()error('KIM artwork must not replace a claimed Dex sprite')end,

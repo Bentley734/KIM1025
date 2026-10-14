@@ -1069,8 +1069,11 @@ return function(mod)
   -- normal KIM trainer = 65%, Potato pinned trainer = 85%.
   mod._kantoInMotionKimTrainerScaleActive = false
 
+  local nativeMoveRendering=assert((loadstring or load)(assert(mod:read("lib/native_move_rendering.lua"))))()
+  mod.exports.nativeMoveRendering=nativeMoveRendering
+
   local function battleSystemEnabled()
-    return not IS_GEN2 and mod.options:get("battleSystem") ~= false
+    return not IS_GEN2 and not nativeMoveRendering() and mod.options:get("battleSystem") ~= false
   end
 
   -- KIM no longer integrates with 3D battle stages.
@@ -2085,6 +2088,7 @@ return function(mod)
           return canvas
         end
         BattleState.drawPicsLayer = function(self, ...)
+          if nativeMoveRendering(self) then return nativeDrawPicsLayer(self, ...) end
           local player, playerManaged = mod._kantoInMotionFlatNativeFrame(self, "player")
           local enemy, enemyManaged = mod._kantoInMotionFlatNativeFrame(self, "enemy")
           local trainer = type(mod._kantoInMotionFlatTrainerFrame) == "function"
@@ -2128,6 +2132,7 @@ return function(mod)
         local nativeDrawHUDs = BattleState.drawHUDs
         BattleState._kantoInMotionSourceHudBands = nativeDrawHUDs
         BattleState.drawHUDs = function(self, ...)
+          if nativeMoveRendering(self) then return nativeDrawHUDs(self, ...) end
           if battleLiteFullScreenActive() and not self._kantoInMotionHudCapture then
             return
           end
@@ -2140,7 +2145,7 @@ return function(mod)
         local nativeBattleDraw = BattleState.draw
         BattleState._kantoInMotionBattleDraw = nativeBattleDraw
         BattleState.draw = function(self, ...)
-          local ownsFullscreen = battleLiteFullScreenActive()
+          local ownsFullscreen = not nativeMoveRendering(self) and battleLiteFullScreenActive()
           local ownsExternalMobileStageUi = false
           if type(mod._kantoInMotionNativeMobileHost) == "function"
               and mod._kantoInMotionNativeMobileHost()
@@ -2149,6 +2154,10 @@ return function(mod)
             ownsExternalMobileStageUi = okExternal and value == true
           end
           if not ownsFullscreen then
+            restoreBattleLayout(self.game)
+            local renderer=self.game and self.game.renderer
+            if nativeMoveRendering(self) and renderer and renderer.worldOverride==flatBattleWorldCanvas
+                and type(renderer.setWorldOverride)=="function" then renderer:setWorldOverride(nil) end
             if pendingFullscreenBattle == self then pendingFullscreenBattle = nil end
             -- A cooperative external stage can own the world without owning
             -- KIM's lower battle UI. Keep the hybrid marker live on mobile so
@@ -3989,7 +3998,7 @@ return function(mod)
       g.setShader()
       g.setColor(1, 1, 1, 1)
       if padX>0 or padY>0 then g.translate(padX,padY) end
-      -- Rebuild the native transparent battle layers over the HD arena. KIM
+      -- Rebuild idle picture layers over the HD arena. KIM
       -- does not ship or inject move-animation art here; Gen1Recomp (or an
       -- external animation provider) remains the animation authority.
       local okLayers, layerErr = pcall(function()
@@ -4039,15 +4048,6 @@ return function(mod)
         -- this centred overlay so it cannot reappear in the middle of the
         -- widened battlefield.
       end)
-      if okLayers then
-        okLayers,layerErr=pcall(function()
-          if type(battle.drawAnimLayer) == "function" then
-            local colorized = type(battle.colorMode) == "function"
-              and battle:colorMode() or false
-            battle:drawAnimLayer(colorized)
-          end
-        end)
-      end
       if not okLayers then error(layerErr, 0) end
       -- battle.overlay is draw-only. Replaying it onto the scratch canvas preserves compatible sparkle/custom overlays above the HD background.
       local okRuntime, Runtime = pcall(require, "src.mods.Runtime")
@@ -4125,38 +4125,8 @@ return function(mod)
       sx,sy=scale,scale
     end
 
-    -- Pokeball catch animations are authored for the stock 160x144 enemy
-    -- slot, while KIM's animated enemy is drawn directly at final resolution.
-    -- Prepare a temporary native-pixel translation before capturing the anim
-    -- layer so the toss keeps its original launch point but finishes on the
-    -- actual KIM enemy battler. The module clears the shift immediately after
-    -- the scratch capture; ordinary move animations never see it.
-    if mod._kantoInMotionPokeballTargetFix
-        and type(mod._kantoInMotionPokeballTargetFix.prepare)=="function" then
-      pcall(mod._kantoInMotionPokeballTargetFix.prepare,
-        mod._kantoInMotionPokeballTargetFix,battle,x,y,sx,sy)
-    end
-
-    -- On Android/iOS the fullscreen enemy can sit outside the stock 160x144
-    -- overlay rectangle. v8.6.59 translated the native ball inside that exact
-    -- 160x144 scratch canvas, so a valid mobile retarget could clip every ball
-    -- frame before composition. Expand only this temporary capture by the full
-    -- prepared catch offset, then subtract the padding when compositing. Other
-    -- native scene pixels therefore stay at the exact same screen coordinates.
-    local catchPadX,catchPadY=0,0
-    local ballShift=battle and battle._kantoInMotionBallAnimShift
-    if orient and type(ballShift)=="table" then
-      catchPadX=math.min(512,math.ceil(math.abs(tonumber(ballShift.dx) or 0)+32))
-      catchPadY=math.min(512,math.ceil(math.abs(tonumber(ballShift.dy) or 0)+32))
-    end
     local scenePadX,scenePadY
-    scene,_,scenePadX,scenePadY=captureBattleScene(
-      battle,catchPadX,catchPadY)
-    if mod._kantoInMotionPokeballTargetFix
-        and type(mod._kantoInMotionPokeballTargetFix.finish)=="function" then
-      pcall(mod._kantoInMotionPokeballTargetFix.finish,
-        mod._kantoInMotionPokeballTargetFix,battle)
-    end
+    scene,_,scenePadX,scenePadY=captureBattleScene(battle,0,0)
     if not scene then return false end
 
     g.push("all")
@@ -4647,7 +4617,7 @@ return function(mod)
         -- inspect/capture the untouched source (priority 100). Now remove the
         -- entire native battle canvas before Gen1Recomp can scale it over the
         -- fullscreen arena. Transparent trainer/native-effect pieces are
-        -- reconstructed in render.hud from drawPicsLayer/drawAnimLayer only.
+        -- reconstructed only when native animation/effect frames are inactive.
         love.graphics.push("all")
         love.graphics.setCanvas(ctx.uiCanvas)
         local touchOrient=touchBattleOrientation(battle.game)
@@ -5212,29 +5182,4 @@ return function(mod)
     return out
   end)
 
-  -- Native catch positioning does not replace move animations or effects.
-  if not IS_GEN2 then
-    local okHelper,helper
-    -- Keep the accepted native catch-animation target correction. This module
-    -- adjusts only Gen1Recomp's own Pokeball animation; it contains no bundled
-    -- move art or move SFX.
-    okHelper,helper=pcall(function()
-      local src=assert(mod:read("lib/pokeball_target_fix.lua"))
-      local loader=loadstring or load
-      return assert(loader(src,"@"..mod.path.."/lib/pokeball_target_fix.lua"))()
-    end)
-    if okHelper and type(helper)=="function" then
-      okHelper,helper=pcall(helper,mod,
-        directStageGeometry,directSideMetrics,battleWorldMetrics)
-      if okHelper then
-        mod._kantoInMotionPokeballTargetFix=helper
-        mod.exports.integratedPokeballTargetFix=true
-      else
-        mod.log:error("integrated Pokeball target fix failed: %s",tostring(helper))
-      end
-    else
-      mod.log:error("cannot load integrated Pokeball target fix: %s",tostring(helper))
-    end
-
-  end
 end

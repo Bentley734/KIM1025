@@ -49,6 +49,7 @@ for generation=1,3 do for _,host in ipairs({'Windows','OS X','Android','iOS'})do
  if generation~=3 then check(mod.exports.registerBattleCompatibility({owner='potato_voxel',active=function()return true end})==false,'legacy 3D registration refused') end
  check(mod._kantoInMotionBattleArtCompat==nil and mod._kantoInMotionPotatoVoxelCompat==nil and mod._kantoInMotionBattleArtGen2Compat==nil,'3D installers absent')
  if generation==1 then check(mod.exports.integratedKrba==nil and mod.exports._kantoInMotionKRBAActiveSession==nil,'native move animations retained')end
+ check(A.start==nativeStart and B.drawAnimLayer==nativeDraw,'animation player and effect draw methods untouched')
  check(A.update==unchanged and A.draw==unchanged and A.pollEffects==unchanged and A.isDone==unchanged,'native animation lifecycle preserved')
  for _,id in ipairs(assert(loadfile('tests/fixtures/native_moves.lua'))())do
   for _,side in ipairs({true,false})do

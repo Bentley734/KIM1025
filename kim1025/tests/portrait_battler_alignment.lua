@@ -9,7 +9,7 @@ local sprites=true
 local bgMode='auto'
 local function image(w,h)return {getDimensions=function()return w,h end,setFilter=function()end}end
 local pic=image(64,64)
-local env=setmetatable({battleLiteFullScreenActive=function()return false end,battleBackgroundMode=function()return 'fullscreen'end,mod={exports={},options={get=function(_,key)if key=='battleSprites'then return sprites end;if key=='battleBgMode'then return bgMode end;return size end}},
+local env=setmetatable({nativeMoveRendering=assert(loadfile("lib/native_move_rendering.lua"))(),battleLiteFullScreenActive=function()return false end,battleBackgroundMode=function()return 'fullscreen'end,mod={exports={},options={get=function(_,key)if key=='battleSprites'then return sprites end;if key=='battleBgMode'then return bgMode end;return size end}},
  battleLiteDirectStageActive=function()return true end,battleLiteOwnsSprites=function()return sprites end,
  touchBattleOrientation=function()return orientation end,hdBattleBackgroundsEnabled=function()return true end,
  hdArenaImage=function()return pic,{file='grass_day'}end,

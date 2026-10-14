@@ -1,3 +1,13 @@
+# KIM1025 1.7.42 — Unmodified native attack rendering
+
+Remove the remaining animation-player wrapper and native OAM scratch-canvas replay. Remove the catch retargeting module. During a move, native picture effects, palette fades, shakes, flashes and resting catch animations, KIM yields battle drawing, picture/HUD wrappers, background filtering and final-canvas composition to the engine. Idle HD presentation resumes only after those effects finish. Attack frames use the native battlefield rather than the HD reconstruction. This applies to both attacker directions and old saved options cannot enable the removed players.
+
+Built from GitHub's latest 1.7.41. 1025Dex 1.2.54 remains unchanged; its species artwork is retained. Johnto remains untouched.
+
+Validation: 224 real GPU frames of Tackle, Growl and Tail Whip, both player and enemy, match native output pixel-for-pixel using the running game's actual AnimPlayer, picture effects and cartridge animation/graphics data. No KIM scratch/background-effect calls run on those frames. Native player/effect methods remain identical at startup. Existing source compilation, 165-move argument forwarding, sprite alignment, Pokédex and Gen 3 regressions pass under LuaJIT/Lua 5.3. KIM and Menu Customizer start together across eleven games under LuaJIT. Party-ball GPU captures remain native. Live gameplay was not restarted automatically.
+
+Install with Menu Customizer 3.2.122. Fully exit and reopen the game to unload previous wrappers; returning to the title screen does not unload Lua patches.
+
 # KIM1025 1.7.41 — Restore both party Poké Ball rows
 
 Restore native player and enemy party Poké Balls in the Gen 1 battle HUD. The HUD capture still erased their cells expecting a removed Poké Ball Colorfix layer to redraw them, leaving only the row brackets. Remove the obsolete cell erasure, separate canvas and empty-layer composition; preserve the native party tiles alongside the HUD.
