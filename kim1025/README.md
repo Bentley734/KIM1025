@@ -1,3 +1,13 @@
+# KIM1025 1.7.41 — Restore both party Poké Ball rows
+
+Restore native player and enemy party Poké Balls in the Gen 1 battle HUD. The HUD capture still erased their cells expecting a removed Poké Ball Colorfix layer to redraw them, leaving only the row brackets. Remove the obsolete cell erasure, separate canvas and empty-layer composition; preserve the native party tiles alongside the HUD.
+
+Built from GitHub's latest 1.7.40 source and release. Preserve the native move-animation cleanup, catch positioning, HUD placement, trainer choices, backgrounds and Menu Customizer integration. Johnto remains untouched.
+
+Validation: reproduce erased ball pixels on 1.7.40 with the real GPU and cartridge ball atlas; the fixed HUD matches every pixel of native rendering across ten desktop/mobile cases. Cover both parties, healthy/status/fainted/empty slots, trainer/link/wild battles, slide-in frames, adjacent HP cells and graphics/battle-state restoration. Existing native move forwarding, whole-source compilation, sprite alignment, Pokédex and Gen 3 tests pass under LuaJIT and Lua 5.3.
+
+Restart the game after updating to reload the HUD capture.
+
 # KIM1025 1.7.40 — Native move animations and effects
 
 Remove the bundled KRBA/Essentials animation installer, desktop/mobile replacement players, all 165 animation definitions, move PNGs and move SFX. Remove the MOVE ANIMATIONS setting, custom battler transforms, wide/3D effect planes and animation-layer clipping. Old saved preferences cannot reinstall the provider.

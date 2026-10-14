@@ -3824,9 +3824,6 @@ return function(mod)
   -- only for those catch frames so the translated ball cannot be clipped.
   local battleSceneExpandedCanvas = nil
   local battleHudCanvas = nil
-  -- Party PokÃƒÂ© Balls are captured separately so HUD COLOR = INVERTED can
-  -- transform HUD ink without recoloring PokÃƒÂ©ball Colorfix artwork.
-  local battlePartyBallCanvas = nil
   local battleTextCanvas = nil
   local battleHudQuads = nil
   local battleHudShader = nil
@@ -4182,7 +4179,6 @@ return function(mod)
     -- Four logical rows above the original HUD let larger names extend upward
     -- without clipping or moving the level/HP/party geometry.
     battleHudCanvas = sizedBattleCanvas(battleHudCanvas,320,296)
-    battlePartyBallCanvas = sizedBattleCanvas(battlePartyBallCanvas,320,296)
     if not battleHudCanvas then return nil, nil end
     local ui=menuBattleUi()
     local presenter=ui and ui.hudNames
@@ -4229,15 +4225,6 @@ return function(mod)
     end
 
     local ok, err = pcall(function()
-      -- Keep party-ball artwork on its own native-resolution layer.  The
-      -- integrated PokÃƒÂ©ball Colorfix drawBallRow hook switches to this canvas
-      -- only for the six party icons, leaving every other HUD pixel exactly as
-      -- it was in the confirmed v9 capture path.
-      if battlePartyBallCanvas then
-        g.setCanvas(battlePartyBallCanvas)
-        g.origin()
-        g.clear(0, 0, 0, 0)
-      end
       g.setCanvas(battleHudCanvas)
       g.origin()
       g.scale(2,2);g.translate(0,4)
@@ -4249,7 +4236,6 @@ return function(mod)
       battle.colorMode = function() return false end
       battle._kantoInMotionHudCapture = true
       battle._kimHudNames = names
-      battle._kantoInMotionPartyBallCanvas = battlePartyBallCanvas
 
       -- Cooperative staged renderers may wrap/suppress drawHUDs whenever
       -- dramaticShapeShot is present. This is KIM's private 160x144 scratch
@@ -4259,31 +4245,6 @@ return function(mod)
       if mobileSafeCapture then battle.dramaticShapeShot = nil end
       battle:drawHUDs(slide or 0)
 
-      -- The party row is authored into its own true-colour canvas above. If an
-      -- engine/mod HUD wrapper also bakes the source balls into the main HUD
-      -- canvas, KIM's shadow pass makes that stale row visible behind the
-      -- correct Colorfix balls even after another battle renderer persisted OG
-      -- layout and Potato was re-enabled). Scrub only the exact 8px party-row
-      -- cells, and only while those rows are actually active; live HP numbers
-      -- share y=80 later in the battle and must never be touched.
-      if battlePartyBallCanvas and type(g.setBlendMode) == "function"
-          and type(g.rectangle) == "function" then
-        local intro = battle.introBalls and (slide or 0) == 0
-        local enemyRow = (battle.showEnemyBalls and battle.enemyParty
-            and (slide or 0) == 0)
-          or (intro and battle.enemyParty
-            and (battle.kind == "trainer" or battle.kind == "link"))
-        if intro or enemyRow then
-          g.setCanvas(battleHudCanvas)
-          g.setShader()
-          g.setBlendMode("replace")
-          g.setColor(0, 0, 0, 0)
-          if intro then g.rectangle("fill", 88, 80, 48, 8) end
-          if enemyRow then g.rectangle("fill", 24, 16, 48, 8) end
-          g.setBlendMode("alpha")
-          g.setColor(1, 1, 1, 1)
-        end
-      end
     end)
 
     if stackGuardCapture then
@@ -4304,7 +4265,6 @@ return function(mod)
 
     battle._kantoInMotionHudCapture = nil
     battle._kimHudNames = priorNames
-    battle._kantoInMotionPartyBallCanvas = nil
     if ownColorMode ~= nil then battle.colorMode = ownColorMode
     else battle.colorMode = nil end
     if previousCanvas then g.setCanvas(previousCanvas) else g.setCanvas() end
@@ -4314,7 +4274,7 @@ return function(mod)
       end
       return nil, nil
     end
-    return battleHudCanvas, battlePartyBallCanvas, names
+    return battleHudCanvas, nil, names
   end
 
   local BATTLE_HUD_SHADER = [[
@@ -4423,7 +4383,7 @@ return function(mod)
     end
 
     local nameLayout={scaleX=hsX,scaleY=hsY,dpiX=dpiX,dpiY=dpiY}
-    local layer,partyBalls,names=captureBattleHud(battle,slide,nameLayout)
+    local layer,_,names=captureBattleHud(battle,slide,nameLayout)
     local quads=layer and hudQuads() or nil
     if not (layer and quads) then return false end
 
@@ -4456,15 +4416,7 @@ return function(mod)
     g.draw(layer, quads.enemy, enemyBandX, enemyBandY, 0, hsX/2, hsY/2)
     g.draw(layer, quads.player, playerBandX, playerBandY, 0, hsX/2, hsY/2)
 
-    -- Composite PokÃƒÂ©ball Colorfix artwork after the HUD shader.  This keeps
-    -- the exact v9 HUD resolution/geometry while preventing HUD COLOR =
-    -- INVERTED from turning the balls' dark artwork outlines into white ink.
     g.setShader()
-    if partyBalls then
-      g.setColor(1, 1, 1, hudOpacity)
-      g.draw(partyBalls, quads.enemy, enemyBandX, enemyBandY, 0, hsX/2, hsY/2)
-      g.draw(partyBalls, quads.player, playerBandX, playerBandY, 0, hsX/2, hsY/2)
-    end
     if names then
       names.presenter.draw(names,{
         enemy={x=enemyBandX,y=enemyBandY,sourceY=0},
