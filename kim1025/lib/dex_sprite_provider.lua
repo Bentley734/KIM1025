@@ -28,7 +28,7 @@ return function(mod)
   return entries
  end
  mod.exports.getDexSpriteSheet=function(species,side,shiny,dex)
-  local key=tostring(species):upper();local rows=catalog()
+  local key=(mod.exports.normalizeSpeciesKey or string.upper)(tostring(species));local rows=catalog()
   local female=key:match('_FEMALE$')~=nil;key=key:gsub('_FEMALE$','')
   local row=rows[key]or rows[tostring(dex)];if not row then return nil end
   local variants=row[side=='back'and 'back'or 'front']

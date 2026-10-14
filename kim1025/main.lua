@@ -123,6 +123,7 @@ return function(mod)
       return 0
     end
   end
+  mod.exports.normalizeSpeciesKey=assert((loadstring or load)(assert(mod:read('lib/species_key.lua'))))()
   assert((loadstring or load)(assert(mod:read('lib/dex_sprite_provider.lua'))))()(mod)
   -- Share grouped navigation across native and modern option presenters.
   do
@@ -488,7 +489,7 @@ return function(mod)
 
   local function normalizedSpecies(species)
     if type(species) ~= "string" then return nil end
-    local key = species:upper():gsub("[^A-Z0-9_]", "")
+    local key = mod.exports.normalizeSpeciesKey(species)
     return SPECIES_KEY_ALIASES[key] or key
   end
 
