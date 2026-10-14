@@ -1,4 +1,4 @@
--- Compare the KIM handoff with native graphics on every reported move frame.
+-- Compare transparent native picture/OAM capture on every reported move frame.
 local root=assert(os.getenv('KIM_PARTY_SOURCE_ROOT'))
 local engine=assert(os.getenv('ENGINE_TEST_ROOT'))
 local cache=assert(os.getenv('POKEMON_CACHE_ROOT'))
@@ -28,26 +28,30 @@ function love.load()
   B.picImage=function(_,img)return img end
   B.fxFaintActive=function()return false end
   B.playAnimSound=function()end
-  local helper=assert(loadstring(read(root..'/lib/native_move_rendering.lua')))()
   local function nativeDraw(self)
-   G.setShader();G.setScissor();G.setColor(1,1,1,1);G.rectangle('fill',0,0,160,144)
+   G.setShader();G.setScissor();G.setColor(1,1,1,1)
    self:drawBattlerPic(self.player,8,40,2,0,0)
    self:drawBattlerPic(self.enemy,96,0,1,0,0)
    self.animPlayer:draw()
    return 'native-result',self.animName
   end
   local source=read(root..'/main.lua')
-  local a=assert(source:find('        BattleState.draw = function(self, ...)',1,true))
-  local b=assert(source:find('\n        end\n      end',a,true))+#'\n        end'
-  local customCalls=0
-  local function forbidden()customCalls=customCalls+1;error('custom animation graphics called')end
-  local env=setmetatable({BattleState=B,nativeBattleDraw=nativeDraw,nativeMoveRendering=helper,
-   battleLiteFullScreenActive=function()return true end,
-   restoreBattleLayout=function()end,mod={},
-   setFlatBattleWorld=forbidden,withoutBattleBackgroundFill=forbidden,
-   unpackCompat=unpack},{__index=_G})
-  local setup=assert(loadstring(source:sub(a,b)));setfenv(setup,env);setup()
-  local actual,reference=G.newCanvas(160,144),G.newCanvas(160,144)
+  B.drawPicsLayer=function(self)
+   G.setColor(1,1,1,1)
+   self:drawBattlerPic(self.player,8,40,2,0,0)
+   self:drawBattlerPic(self.enemy,96,0,1,0,0)
+  end
+  B.drawAnimLayer=function(self)self.animPlayer:draw()end
+  B.colorMode=function()return false end
+  local a=assert(source:find('  local function captureBattleScene(',1,true))
+  local b=assert(source:find('  local function drawNativeBattleOverlay(',a,true))
+  local env=setmetatable({mod={_kantoInMotionNativeMobileGen1=function()return false end},
+   logicalCanvas=function(c)return c or G.newCanvas(160,144)end,
+   battleOffsets=function()return 0,0,0 end,battleLiteDirectStageActive=function()return false end,
+   battleLiteOwnsSprites=function()return false end,
+   require=function(n)if n=='src.mods.Runtime'then return {}end;return require(n)end},{__index=_G})
+  local setup=assert(loadstring(source:sub(a,b-1)..'return captureBattleScene'));setfenv(setup,env);local capture=setup()
+  local reference=G.newCanvas(160,144)
   local frames=0
   for _,id in ipairs({'TACKLE','GROWL','TAIL_WHIP'})do for _,side in ipairs({true,false})do
    local ap=A.new(data)
@@ -59,9 +63,7 @@ function love.load()
    local n=0
    while not ap:isDone()do
     for _,ev in ipairs(ap:pollEffects())do state:applyAnimEffect(ev)end
-    assert(helper(state),'native move frame must bypass custom rendering')
-    G.setCanvas(actual);G.origin();G.clear(0,0,0,0)
-    local result,move=B.draw(state);assert(result=='native-result' and move==id)
+    local actual=assert(capture(state,0,0),'transparent native layers captured')
     G.setCanvas(reference);G.origin();G.clear(0,0,0,0);nativeDraw(state);G.setCanvas()
     local pixels,expected=actual:newImageData(),reference:newImageData()
     for y=0,143 do for x=0,159 do
@@ -71,11 +73,8 @@ function love.load()
     n=n+1;frames=frames+1;assert(n<500,'animation must complete');ap:update()
    end
    assert(n>0,'reported move must have frames')
-   state.animPlaying=false;state.fx={shakeX=-2,shakeY=1};assert(helper(state),'post-animation native shake retained')
-   state.fx={};state.picFx={};assert(not helper(state),'custom menus resume after effects finish')
   end end
-  assert(customCalls==0,'no KIM canvas/shader/effect reconstruction ran')
-  write(output..'/result.txt','PASS: '..frames..' pixel-identical native frames for player/enemy Tackle, Growl and Tail Whip; no custom effect reconstruction\n')
+  write(output..'/result.txt','PASS: '..frames..' pixel-identical transparent native picture/OAM frames for player/enemy Tackle, Growl and Tail Whip; native player unchanged\n')
  end,debug.traceback)
  if not ok then write(output..'/result.txt','FAIL: '..tostring(err)..'\n')end
  love.event.quit(ok and 0 or 1)

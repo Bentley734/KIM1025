@@ -1069,11 +1069,8 @@ return function(mod)
   -- normal KIM trainer = 65%, Potato pinned trainer = 85%.
   mod._kantoInMotionKimTrainerScaleActive = false
 
-  local nativeMoveRendering=assert((loadstring or load)(assert(mod:read("lib/native_move_rendering.lua"))))()
-  mod.exports.nativeMoveRendering=nativeMoveRendering
-
   local function battleSystemEnabled()
-    return not IS_GEN2 and not nativeMoveRendering() and mod.options:get("battleSystem") ~= false
+    return not IS_GEN2 and mod.options:get("battleSystem") ~= false
   end
 
   -- KIM no longer integrates with 3D battle stages.
@@ -2020,7 +2017,27 @@ return function(mod)
         return clear(r, gr, b, a, ...)
       end
     end
+    -- A shaking zone pass fills its palette rectangles with opaque paper.
+    -- Preserve its recolor/offset draw, but omit that paper on the HD overlay.
+    local ownZonePass=rawget(battle,"drawZonePass")
+    local originalZonePass=battle.drawZonePass
+    local inZonePass=false
+    if fullscreenPaperless and type(originalZonePass)=="function" then
+      battle.drawZonePass=function(self,...)
+        local prior=inZonePass
+        inZonePass=true
+        local result={pcall(originalZonePass,self,...)}
+        inZonePass=prior
+        local ok=table.remove(result,1)
+        if not ok then error(result[1],0) end
+        return unpackCompat(result)
+      end
+    end
     g.rectangle = function(mode, x, y, w, h, ...)
+      local target=g.getCanvas and g.getCanvas() or nil
+      if fullscreenPaperless and inZonePass and target==sourceCanvas and mode=="fill" then
+        return
+      end
       if mode == "fill" and x == 0 and y == 0 and w == 160 and h == 144 then
         local r, gr, b, a = g.getColor()
         local fullWhite = r > 0.95 and gr > 0.95 and b > 0.95 and a > 0.05
@@ -2032,7 +2049,6 @@ return function(mod)
             if target ~= nil then clear(0, 0, 0, 0) end
             return
           end
-          if fullscreenPaperless then return end
         end
       end
       return rectangle(mode, x, y, w, h, ...)
@@ -2040,6 +2056,7 @@ return function(mod)
     local result = { pcall(fn, battle, ...) }
     g.rectangle = rectangle
     g.clear = clear
+    battle.drawZonePass=ownZonePass
     local ok = table.remove(result, 1)
     if not ok then error(result[1], 0) end
     return unpackCompat(result)
@@ -2088,7 +2105,6 @@ return function(mod)
           return canvas
         end
         BattleState.drawPicsLayer = function(self, ...)
-          if nativeMoveRendering(self) then return nativeDrawPicsLayer(self, ...) end
           local player, playerManaged = mod._kantoInMotionFlatNativeFrame(self, "player")
           local enemy, enemyManaged = mod._kantoInMotionFlatNativeFrame(self, "enemy")
           local trainer = type(mod._kantoInMotionFlatTrainerFrame) == "function"
@@ -2132,7 +2148,6 @@ return function(mod)
         local nativeDrawHUDs = BattleState.drawHUDs
         BattleState._kantoInMotionSourceHudBands = nativeDrawHUDs
         BattleState.drawHUDs = function(self, ...)
-          if nativeMoveRendering(self) then return nativeDrawHUDs(self, ...) end
           if battleLiteFullScreenActive() and not self._kantoInMotionHudCapture then
             return
           end
@@ -2145,7 +2160,7 @@ return function(mod)
         local nativeBattleDraw = BattleState.draw
         BattleState._kantoInMotionBattleDraw = nativeBattleDraw
         BattleState.draw = function(self, ...)
-          local ownsFullscreen = not nativeMoveRendering(self) and battleLiteFullScreenActive()
+          local ownsFullscreen = battleLiteFullScreenActive()
           local ownsExternalMobileStageUi = false
           if type(mod._kantoInMotionNativeMobileHost) == "function"
               and mod._kantoInMotionNativeMobileHost()
@@ -2155,9 +2170,6 @@ return function(mod)
           end
           if not ownsFullscreen then
             restoreBattleLayout(self.game)
-            local renderer=self.game and self.game.renderer
-            if nativeMoveRendering(self) and renderer and renderer.worldOverride==flatBattleWorldCanvas
-                and type(renderer.setWorldOverride)=="function" then renderer:setWorldOverride(nil) end
             if pendingFullscreenBattle == self then pendingFullscreenBattle = nil end
             -- A cooperative external stage can own the world without owning
             -- KIM's lower battle UI. Keep the hybrid marker live on mobile so
@@ -3998,7 +4010,7 @@ return function(mod)
       g.setShader()
       g.setColor(1, 1, 1, 1)
       if padX>0 or padY>0 then g.translate(padX,padY) end
-      -- Rebuild idle picture layers over the HD arena. KIM
+      -- Rebuild transparent native picture and OAM layers over the HD arena. KIM
       -- does not ship or inject move-animation art here; Gen1Recomp (or an
       -- external animation provider) remains the animation authority.
       local okLayers, layerErr = pcall(function()
@@ -4048,6 +4060,15 @@ return function(mod)
         -- this centred overlay so it cannot reappear in the middle of the
         -- widened battlefield.
       end)
+      if okLayers and type(battle.drawAnimLayer)=="function" then
+        okLayers,layerErr=pcall(function()
+          g.push("all")
+          local okAnim,animErr=pcall(battle.drawAnimLayer,battle,
+            type(battle.colorMode)=="function" and battle:colorMode() or false)
+          g.pop()
+          if not okAnim then error(animErr,0)end
+        end)
+      end
       if not okLayers then error(layerErr, 0) end
       -- battle.overlay is draw-only. Replaying it onto the scratch canvas preserves compatible sparkle/custom overlays above the HD background.
       local okRuntime, Runtime = pcall(require, "src.mods.Runtime")
@@ -4617,7 +4638,7 @@ return function(mod)
         -- inspect/capture the untouched source (priority 100). Now remove the
         -- entire native battle canvas before Gen1Recomp can scale it over the
         -- fullscreen arena. Transparent trainer/native-effect pieces are
-        -- reconstructed only when native animation/effect frames are inactive.
+        -- reconstructed transparently without palette-region background paper.
         love.graphics.push("all")
         love.graphics.setCanvas(ctx.uiCanvas)
         local touchOrient=touchBattleOrientation(battle.game)

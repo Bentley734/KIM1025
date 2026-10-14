@@ -1,3 +1,13 @@
+# KIM1025 1.7.43 — Keep HD battles during native moves; remove white palette boxes
+
+Remove 1.7.42's whole-battle animation fallback: HD scenery, Pokémon placement and the custom HUD stay active during attacks and native feedback. Restore native OAM drawing into the transparent overlay without reinstating KRBA, move assets/SFX or the catch animation-player wrapper.
+
+Fix the specific opaque-box path. Gen 1's shaking palette-zone pass paints opaque background paper for each region. While drawing over KIM's HD scene, omit only those palette-pass paper fills on the native source canvas. Preserve zone recoloring, offsets, foreground graphics and native flash rectangles. Scope interception to that draw and restore instance methods/graphics functions on success or failure.
+
+Based on latest GitHub 1.7.42; analyzed the user's six-second recording and the running executable's Lua source. A real GPU fixture reproduces the opaque-region pixels with pre-fallback 1.7.41. The fixed code passes 270 native feedback frames across all six player/enemy damaging/status feedback types while HD ownership remains active. All 224 player/enemy Tackle, Growl and Tail Whip picture/OAM frames match transparent native foreground output. Ten native party-ball capture cases pass. Existing compile, native method/argument, sprite alignment, Pokédex and Gen 3 tests pass under LuaJIT and Lua 5.3; KIM/Menu startup passes all eleven games under LuaJIT. The complete running gameplay session was not restarted automatically.
+
+Use with Menu Customizer 3.2.123 and fully exit/reopen the game. Johnto remains untouched. 1025Dex stays at 1.2.54.
+
 # KIM1025 1.7.42 — Unmodified native attack rendering
 
 Remove the remaining animation-player wrapper and native OAM scratch-canvas replay. Remove the catch retargeting module. During a move, native picture effects, palette fades, shakes, flashes and resting catch animations, KIM yields battle drawing, picture/HUD wrappers, background filtering and final-canvas composition to the engine. Idle HD presentation resumes only after those effects finish. Attack frames use the native battlefield rather than the HD reconstruction. This applies to both attacker directions and old saved options cannot enable the removed players.
