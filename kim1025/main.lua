@@ -3369,7 +3369,13 @@ return function(mod)
     end
     local complete=aspectArenaImage(backdrop,vw,vh)
     local A=hdArenaRouter._aspectBackgrounds
-    if complete and type(A.transform)=="function" then
+    local customField=false
+    local menuOk,menu=pcall(mod and mod.find,"gen3transparency")
+    local provider=menuOk and menu and menu.exports and menu.exports.battlefieldBackground
+    if provider and type(provider.draw)=="function" then local paintedOk,painted=pcall(provider.draw,0,0,vw,vh);customField=paintedOk and painted==true end
+    if customField then
+      -- Scenery is already painted; preserve the existing actor/effect path.
+    elseif complete and type(A.transform)=="function" then
       local t=A.transform(vw,vh,wideTransform)
       g.draw(complete,t.x,t.y,0,t.sx,t.sy)
     else

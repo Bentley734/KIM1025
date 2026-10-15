@@ -1303,6 +1303,12 @@ return function(mod)
   local function drawFrlgHdBackground(image, originX, originY, ux, uy, geo, coverage)
     if not (image and geo and love and love.graphics) then return false end
 
+    local menuOk,menu=pcall(mod and mod.find,"gen3transparency")
+    local provider=menuOk and menu and menu.exports and menu.exports.battlefieldBackground
+    if coverage and provider and type(provider.draw)=="function" then
+      local paintedOk,painted=pcall(provider.draw,coverage.x,coverage.y,coverage.w,coverage.h)
+      if paintedOk and painted==true then return true end
+    end
     local t = frlgGlobalBackgroundTransform(image, geo)
     if not t then return false end
     local x,y=originX+t.tx*ux,originY+t.ty*uy

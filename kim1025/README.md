@@ -1,3 +1,7 @@
+KIM1025 1.7.46 - Menu Customizer battlefield backgrounds
+
+Adds an optional scenery-only provider for Menu Customizer 3.11.0 in Gen 1 and Gen 3. It draws before all existing Pokemon, trainer, native motion, move-effect and HUD paths. Native, absent-provider and provider-error cases retain the existing arena. No move-animation ownership or sprite placement changes.
+
 # KIM1025 1.7.45 — Small-window HUD spacing
 
 Cooperate with Menu Customizer 3.3.5 to reserve a name row before rendering native levels and HP. Name text no longer overlaps level text in small windows; the existing HUD remains the fallback when the companion is absent. Validated with real KIM GPU captures from 320×288 through desktop and high-DPI sizes.
