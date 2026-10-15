@@ -1,3 +1,7 @@
+# KIM1025 1.7.45 — Small-window HUD spacing
+
+Cooperate with Menu Customizer 3.3.5 to reserve a name row before rendering native levels and HP. Name text no longer overlaps level text in small windows; the existing HUD remains the fallback when the companion is absent. Validated with real KIM GPU captures from 320×288 through desktop and high-DPI sizes.
+
 # KIM1025 1.7.44 — Restore HD battler motion
 
 The HD arena's direct sprite path now delegates to the native drawBattlerPic effect handler. This restores per-picture offsets, slide/shake/squish effects and live screen-shake displacement at the HD scene scale, retaining the selected sprite provider and arena placement. Temporary sprite/clip state is restored even on errors. Native move scripts remain authoritative; no animation art is imported.

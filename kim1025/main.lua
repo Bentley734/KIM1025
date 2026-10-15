@@ -4390,6 +4390,13 @@ return function(mod)
     local inverted = mod.options:get("battleHudColor") == "inverted" and 1 or 0
     local hudOpacity = math.max(0.25, math.min(1.00,
       (tonumber(mod.options:get("battleHudOpacity")) or 100) / 100))
+    local nameBands={enemy={x=enemyBandX,y=enemyBandY,sourceY=0},
+      player={x=playerBandX,y=playerBandY,sourceY=104},
+      scaleX=hsX,scaleY=hsY,dpiX=dpiX,dpiY=dpiY,opacity=hudOpacity,width=vw}
+    if names and type(names.presenter.layout)=="function" then
+      names.presenter.layout(names,nameBands)
+      enemyBandY,playerBandY=nameBands.enemy.y,nameBands.player.y
+    end
     local shader, shadow = getBattleHudShaders()
     local g = love.graphics
     g.push("all")
@@ -4412,11 +4419,7 @@ return function(mod)
 
     g.setShader()
     if names then
-      names.presenter.draw(names,{
-        enemy={x=enemyBandX,y=enemyBandY,sourceY=0},
-        player={x=playerBandX,y=playerBandY,sourceY=104},
-        scaleX=hsX,scaleY=hsY,dpiX=dpiX,dpiY=dpiY,opacity=hudOpacity,
-      })
+      names.presenter.draw(names,nameBands)
     end
     g.pop()
     return true
